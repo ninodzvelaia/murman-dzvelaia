@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>მურმან ძველაია — პოეტი</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #e8ddd0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #e8ddd0;
+  min-height: 100vh;
+  border-left: 1px solid #c8b89a;
+  border-right: 1px solid #c8b89a;
+}
+
+/* NAV */
+nav {
+  background: #e8ddd0;
+  border-bottom: 1px solid #c8b89a;
+  padding: 0 2rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  font-size: 13px;
+  color: #6a5a4a;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: #1a0e04; border-bottom: 1px solid #8a6a4a; padding-bottom: 2px; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.hamburger span { display: block; width: 22px; height: 1px; background: #6a5a4a; }
+
+.mobile-menu {
+  display: none;
+  background: #e0d4c4;
+  border-bottom: 1px solid #c8b89a;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block;
+  padding: 0.9rem 2rem;
+  font-size: 15px;
+  color: #4a3828;
+  text-decoration: none;
+  border-bottom: 1px solid #d0c4b0;
+  letter-spacing: 0.06em;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+
+/* HERO */
+.hero-section {
+  display: flex;
+  align-items: stretch;
+  min-height: 340px;
+  border-bottom: 1px solid #c8b89a;
+}
+.hero-img { width: 240px; flex-shrink: 0; overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.hero-text {
+  flex: 1;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+  border-left: 1px solid #c8b89a;
+}
+.hero-name { font-size: 30px; font-weight: 700; color: #1a0e04; letter-spacing: 0.04em; line-height: 1.2; }
+.hero-years { font-size: 12px; color: #8a7a6a; letter-spacing: 0.18em; }
+.hero-line { width: 36px; height: 1px; background: #a08060; }
+.hero-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+.hero-tag { font-size: 11px; color: #6a5a4a; border: 1px solid #b8a888; padding: 4px 12px; border-radius: 20px; background: #f0e8dc; }
+.hero-quote { font-size: 14px; color: #6a5a4a; line-height: 1.9; font-style: italic; border-left: 2px solid #b8a070; padding-left: 0.9rem; }
+
+/* CONTENT */
+.content { padding: 2rem; background: #f5ede0; }
+.section-label { font-size: 10px; letter-spacing: 0.14em; color: #9a8a78; text-transform: uppercase; margin-bottom: 1rem; }
+.bio-block { border-left: 2px solid #c0a880; padding-left: 1.2rem; color: #4a3828; font-size: 16px; line-height: 2; }
+
+/* POEMS */
+.poem-card { border: 1px solid #d4c4a8; border-radius: 6px; margin-bottom: 12px; background: #ede0ce; overflow: hidden; }
+.poem-header { padding: 1rem 1.4rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.poem-title { font-size: 17px; color: #2a1a0a; }
+.poem-toggle { font-size: 20px; color: #a08060; transition: transform 0.3s; line-height: 1; }
+.poem-body { display: none; padding: 0 1.4rem 1.4rem; border-top: 1px solid #d4c4a8; }
+.poem-body pre { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; color: #4a3828; line-height: 2.1; white-space: pre-wrap; padding-top: 1.2rem; }
+.poem-card.open .poem-body { display: block; }
+.poem-card.open .poem-toggle { transform: rotate(45deg); }
+
+/* GALLERY */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.gallery-item { aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; border: 1px solid #c8b89a; background: #ddd0be; cursor: pointer; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.3s; }
+.gallery-item:hover img { transform: scale(1.04); }
+
+/* BOOKS */
+.book-row { display: flex; align-items: flex-start; gap: 14px; padding: 1rem 0; border-bottom: 1px solid #d4c4a8; }
+.book-row:last-child { border-bottom: none; }
+.book-bar { width: 4px; min-height: 44px; background: #b8a070; border-radius: 2px; flex-shrink: 0; margin-top: 3px; }
+.book-info { flex: 1; }
+.book-title-text { font-size: 15px; color: #2a1a0a; margin-bottom: 4px; }
+.book-desc { font-size: 13px; color: #7a6a58; line-height: 1.75; font-style: italic; }
+.book-year-text { font-size: 13px; color: #a08060; letter-spacing: 0.06em; white-space: nowrap; padding-top: 2px; }
+
+/* FOOTER */
+footer { background: #e8ddd0; border-top: 1px solid #c8b89a; padding: 1.5rem; text-align: center; }
+footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
+
+.hidden { display: none; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-section { flex-direction: column; min-height: auto; }
+  .hero-img { width: 100%; height: 280px; }
+  .hero-text { border-left: none; border-top: 1px solid #c8b89a; padding: 1.5rem 1.25rem; }
+  .hero-name { font-size: 26px; }
+  .content { padding: 1.5rem 1.25rem; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-row { gap: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active" onclick="sw('home');return false;">მთავარი</a>
+    <a href="#" onclick="sw('poems');return false;">ლექსები</a>
+    <a href="#" onclick="sw('gallery');return false;">გალერეა</a>
+    <a href="#" onclick="sw('books');return false;">კრებულები</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="sw('home');closeMenu();return false;">მთავარი</a>
+  <a href="#" onclick="sw('poems');closeMenu();return false;">ლექსები</a>
+  <a href="#" onclick="sw('gallery');closeMenu();return false;">გალერეა</a>
+  <a href="#" onclick="sw('books');closeMenu();return false;">კრებულები</a>
+</div>
+
+<!-- HOME -->
+<div id="sec-home">
+  <div class="hero-section">
+    <div class="hero-img">
+      <img src="photos/main.jpeg" alt="მურმან ძველაია">
+    </div>
+    <div class="hero-text">
+      <div class="hero-name">მურმან ძველაია</div>
+      <div class="hero-years">1935 — 2012</div>
+      <div class="hero-line"></div>
+      <div class="hero-tags">
+        <span class="hero-tag">პოეტი</span>
+        <span class="hero-tag">პედაგოგი</span>
+      </div>
+      <div class="hero-quote">„რამდენი ფიქრი, რამდენი სევდა<br>ნელა გადადის ენგურის ხიდზე."</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="section-label">ბიოგრაფია</div>
+    <div class="bio-block">
+      მურმან ძველაია 1935 წლის 20 სექტემბერს აბაშაში დაიბადა. გორის პედაგოგიური ინსტიტუტის დამთავრების შემდეგ საცხოვრებლად აფხაზეთში გადავიდა და გალის რაიონის ერთ-ერთ სკოლაში მასწავლებლად მუშაობდა. ჯერ კიდევ ომამდე მისი რამდენიმე პოეტური კრებული გამოიცა.
+      <br><br>
+      აფხაზეთი პოეტს არც ომის შემდეგ დაუტოვებია — იგი სიცოცხლის ბოლომდე სოფელ პირველ გალში დარჩა და ნარინჯოვანის საშუალო სკოლაში მუშაობა გააგრძელა. 2002 წელს მისი რჩეული, ,,გვირილების მინდორი" გამოიცა. პოეტი 2012 წელს, 77 წლის ასაკში გარდაიცვალა. დაკრძალულია სოფელ პირველ გალში.
+    </div>
+  </div>
+</div>
+
+<!-- POEMS -->
+<div id="sec-poems" class="hidden">
+  <div class="content">
+    <div class="section-label">ლექსები</div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">რამდენი ფიქრი</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>მთა დაუძლურდა, ვით ლადო ― სენთან...
+კაცს ცოტას ნახავთ იმედით ფხიზელს.
+რამდენი ფიქრი, რამდენი სევდა
+ნელა გადადის ენგურის ხიდზე.
+თუა რაღაცა ამ მთების იქით,―
+უამრავს ვკარგავ და ცოტას ვიძენ.
+რამდენი ფიქრი, რამდენი ფიქრი,
+რამდენი ფიქრი გადადის ხიდზე.
+წვიმს და ძლივს მოაქვს დედაბერს ტვირთი,
+გამოიარა რამდენი შუკა.
+ქარზე მილეწილ ნაბიჯებს ითვლის
+სამშობლო წინ და სამშობლო უკან.
+არ არის დარი არც აქ, არც იქით,
+გვწუწავს და გვწუწავს მიზეზ და მიზეზ...
+რამდენი სევდა, რამდენი ფიქრი
+ნელა გადადის ენგურის ხიდზე.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">ერთ კარგ პოეტთან</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>ერთ კარგ პოეტთან, უფრო ზუსტად - ჯავახაძესთან
+არ ირჩეოდა არც მთაწმინდა, ჯავა, მაცესტა...
+მე და ინჯია მის ოთახში ჩუმად ვისხედით,
+ჩვენი გორული „მერნის" ქებას რიდით ვისმენდით.
+„ჩვენ შორის დარჩეს, მინდა თქვენი ვადიდო სტარტი"
+და გითხრა, ჯემალ, რომ „რითმების ხარ დიდოსტატი".
+მას შემდეგ ბევრი ლერწმის ყელი გამოითალა,
+ვისთვის იავდრა და ვისთვისაც გამოიდარა,
+კიდევ სხვათათვის - არაფერი გამოვიდა რა...
+შენი კი, ჯემალ, - კვლავაც მინდა ვადიდო სტარტი -
+რომ საქართველოს სიყვარულშიც ხარ დიდოსტატი.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">დიდოსტატის უკანასკნელი წუთები</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>კოლხურ კოშკში სტუმრებია, რომ წვა აღარ შენელდეს,
+მობრძანება სურვებია დავით აღმაშენებელს.
+არ ღალატობს ასაკი ჯერ ხანჯლით პირგაბასრულით,
+ჩამოსულა არსაკიძე და კვეტარის ასული.
+ბრძენის მარჯვენს აფასებენ და ღიაა კარები,
+მოგროვილან აფხაზები, მეგრელები, სვანები.
+სულის სითბო მზის ტოლია, გულის მზესთან გასწორდა.
+საქართველოს ისტორია ჩამუხლულა საწოლთან.
+შავი ფიქრით მოღობილი ― თრთიან ბედისწერანი
+და მამალი ხოხობივით სიკვდილს ებრძვის მწერალი.
+„ფეხზე წამომაყენეთო" ― დიდოსტატის ჩურჩულმა
+გაიარა ყველას გულში სიკვდილივით უჩუმრად.
+კონსტანტინეს ასე ნებავს, ღმერთო ღმერთკაცს მოხედე.
+და კოლხურ კოშკს გარს ევლება „ვაი, ნანა" კოლხეთის.
+წინაპრები ემზეურა... სუსტი, ღონემიხდილი
+ამბობს: მხოლოდ ზეზეურად, ზეზეურად სიკვდილი!...
+დროშასავით აიტაცეს, ფეხზე წამოაყენეს.
+ცრემლი სწვავდათ დიდოელებს, ფხოველებს და კახელებს.
+და გათავდა დიდოსტატი ― მყინვარწვერის ჭაღარა,
+ერთიანმა საქართველომ თავი მის წინ დახარა
+ცა გვრინავდა მეწამული, სუნი იდგა ორღობის
+და დაეცა წიწამურის ველს მამალი ხოხობი...</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">ორად გაყოფილი</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>გადამრევს ეს ქარი კოლხური,
+მეწყერი გადმოქუხს ცით.
+ცის თეთრი კარები მოხურეს,
+გათენდა და შავად ცრის.
+ორად გაყოფილი ენგური,
+მოიმტვრევს სიბრაზით მხრებს.
+იტაცებს ნიავი მეგრული
+ქართულ და აფხაზურ ხმებს.
+ერთმანეთს ებრძვიან ტალღები,
+რომ აყვნენ მესამის ხმას.
+წყურვილი ტუჩებზე მახმება,
+რით ვსუნთქავ ან ვისთვის ვხნავ.
+ფესვივით მოთხარეს ეგ გული,
+მზე მძიმედ ჩადის და წვიმს.
+ორად გაყოფილი ენგური
+რა მდორედ მიიწევს წინ.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">ვეღარ გამიხსნის</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>ვეღარ გამიხსნის
+ზოგჯერ დანა პირს,
+ერთს გადავხედავ
+მტებს, შენისლულებს.
+ისე მოვკვდები,
+ალბათ, დანაპირს
+ვერა და ვერა
+ვერ შეგისრულებ.
+ვარ გაპარული
+მუზის კალოდან
+და ამოვხაპე
+სევდა მცირედიც.
+ბედი არასდროს
+აღარ მწყალობდა
+და ახლა რისი
+მქონდეს იმედი?!
+სისხლის ყვირილი
+იქნებ მეწყება,
+რამ დამაძინოს
+მშვიდად ამაღამ
+და ტიციანის
+ლექსის მეწყერმა
+გამიტანა და
+ცოცხლად დამმარხა.
+რიდი მაქვს შენი
+მთის და კორდების,
+ვეღარ გამიხსნის
+ზოგჯერ დანა პირს,
+მამულო ჩემო,
+ისე მოვკვდები,
+ვერ შეგისრულებ,
+ალბათ, დანაპირს.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">სამი პოეტი</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>ღელავს არაგვის მთვარე ბარჩხალა‒
+მიწის და ზეცის ნაზი კავშირი.
+მთვარის სხივებით ლექსს წერს ბაჩანა,
+ქომაგობს თედო რაზიკაშვილი.
+ვაჟაც აქ არი, მთებს გულს ატოლებს,
+უმწეო ყვავილს უწევს ანგარიშს.
+თუ რა შვილების იყო პატრონი,
+ნეტა თუ გრძნობდა ამას ჩარგალი?
+ო, ჩარგლის მთებო, თქვენი მონა ვარ,
+მღვრიე არაგვმაც წარბი აშვილდა.
+თქვენს მძიმე წარსულს, ნათელ მომავალს
+უმღერდა ჩანგი რაზიკაშვილთა.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">ტიციან ტაბიძეს</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>სულის ზიარო, ვისთან მზიანობ,
+ასე უღმერთოდ რატომ დუმხარო.
+სად დაიკარგე, შე მადლიანო,
+შე არაგვივით ლექსო მქუხარო.
+რაც არის კარგი ― მესამოთხება
+და ვუერთდები ვით მტკვარს ლიახვი.
+დღეს ვკითხულობდი მე სამ მოთხრობას
+და ბევრს ვეძებდი მათში სიახლეს.
+ერთი სული მაქვს როდის მეწვევით,
+დრო ელოდება ახალ ტიტანებს.
+მოდით, მოვარდით, როგორც მეწყერი,
+ცოცხლად დამმარხეთ და გამიტანეთ.</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">ვედრება</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>რისიც მეშინოდა‒ის გაბრწყინდა,
+რა მოხდა, რა დავუმშვენე...
+ღმერთო, უშველე საქართველოს,
+ღმერთო, საქართველოს უშველე;
+მომკლა ამდენმა გათიშვებმა,
+რა აზრს ანთხევენ ― უშვერებს.
+ღმერთო, უშველე საქართველოს,
+ღმერთო, საქართველოს უშველე.
+არიდე სიტყვებს დენთიანებს,―
+მიწებს რა ხარბად იყოფენ...</pre></div>
+    </div>
+
+    <div class="poem-card">
+      <div class="poem-header" onclick="tog(this.parentElement)">
+        <div class="poem-title">თუ ვერ მოვესწარი</div>
+        <div class="poem-toggle">+</div>
+      </div>
+      <div class="poem-body"><pre>ჯერ სიკვდილი აღარ მინდა, ის დღე როგორ არ ვიხილო.
+გადმომყურებს მაღალი მთა, მოიტაცა მარიხი რომ.
+ბარისა თუ მთის შვილებით არ ჩამცხრალან ის ჟინები,
+გამთლიანდი საქართველოვ! მოვრბოდი და ვყიჟინებდი.
+ამას თუ ვერ მოვესწარი, ერთს გთხოვ, ჩემო შვილიშვილო:
+მივიწყების ტანსაბურავს მომახურავს ფინიში რომ.
+მოირბინე ჩემს საფლავთან, ფრთა შეგასხას განთიადმა,
+და ჩამძახე: ჩემო ბაბუ, საქართველო გამთლიანდა!...</pre></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div id="sec-gallery" class="hidden">
+  <div class="content">
+    <div class="section-label">ფოტოგალერეა</div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="photos/photo1.jpeg" alt="მურმან ძველაია"></div>
+      <div class="gallery-item"><img src="photos/photo2.jpeg" alt="მურმან ძველაია"></div>
+      <div class="gallery-item"><img src="photos/photo3.jpeg" alt="მურმან ძველაია"></div>
+      <div class="gallery-item"><img src="photos/photo4.jpeg" alt="მურმან ძველაია"></div>
+      <div class="gallery-item"><img src="photos/photo5.jpeg" alt="მურმან ძველაია"></div>
+      <div class="gallery-item"><img src="photos/main.jpeg" alt="მურმან ძველაია"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKS -->
+<div id="sec-books" class="hidden">
+  <div class="content">
+    <div class="section-label">გამოცემული კრებულები</div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">მონატრება</div>
+        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „მონატრება" პოეტის პირველი წიგნია. „მამულისადმი თავდადება, ჩვენი წარსული და აწმყო, ფიქრი მომავალზე, ომის დღეების გამოძახილი, სიყვარული და მეგობრობა - აი, რა ასულდგმულებს ახალგაზრდა პოეტის ლექსებს.</div>
+      </div>
+      <div class="book-year-text">1978</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">მწიფე ველები</div>
+        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „წინამდებარე კრებული მურმან ძველაიას მეორე წიგნია. სიყვარულით წერს იგი სამშობლოზე, მშობლიურ მიწა-წყალზე, მისთვის ძვირფას ადამიანებზე. პოეტის ლექსებისთვის ნიშანდობლივია გულწრფელობა".</div>
+      </div>
+      <div class="book-year-text">1982</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">ზღვა და გული</div>
+        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „ზღვა და გული" მურმან ძველაიას მესამე კრებულია. „პოეტი წერს სიყვარულზე და მეგობრობაზე, დღევანდელობა და ისტორიულ წარსულზე, გულწრფელად ახარებს ადრე მიტოვებული სოფლის აღორძინება, ადიდებს მშრომელი კაცის მარჯვენას".</div>
+      </div>
+      <div class="book-year-text">1985</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">სიმღერის სიმწვანე</div>
+        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „მურმან ძველაიას წიგნში შეტანილია ბოლო წლებში დაწერილი გამოუქვეყნებელი ლექსები".</div>
+      </div>
+      <div class="book-year-text">1991</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">მძიმე ვალსი</div>
+        <div class="book-desc">გამომცემლობა „განათლება", თბილისი. პოეტისთვის ეს წიგნი რიგით მეხუთეა. „ყურადღებას იქცევს ვერსიფიკაციული ძიებით, თავისებური პოეტური ხედვითა თუ მეტაფორული აზროვნებით".</div>
+      </div>
+      <div class="book-year-text">2000</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">იმედების გვირგვინი</div>
+        <div class="book-desc">ავტორის რიგით მეექვსე წიგნი. „ბოლო დროის შემოქმედებას ცრემლის მდუღარებასავით შეერია აფხაზეთის ტრაგედიის სატკივარი. ნათელ, კაშკაშა ფერებს „მსუყე შავი" სევდასავით შეენივთა და თითქოს კიდევ უფრო გულმისავალი გახდა მათი პოეტური იმპულსები".</div>
+      </div>
+      <div class="book-year-text">2002</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">აბაშა და აბაშელები</div>
+        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. კრებული რიგით მეშვიდე წიგნია. „გულწრფელი მოფერება, სიყვარულის ხმამაღლა გაცხადება ამ მხარეში მცხოვრებლებისადმი. აქ საბჭოური პერიოდის ლექსებიცაა შეტანილი. ძველი და ახალი ყოფა-ცხოვრება - ორივე - პოეტის გულისგულშია გავლილი და ეს ასახულია კიდეც ამ კრებულში".</div>
+      </div>
+      <div class="book-year-text">2003</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">წარსული აწმყოში</div>
+        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. პოეტისთვის ეს წიგნი რიგით მერვეა. „მას გულისგულში სტკივა თავისი ქვეყნის ტკივილი და სჯერა, რომ ამ ტკივილის მოსაშუშებლად ერთად დგომა და ეროვნული სულიერებისა და ცნობიერების გაჯანსაღებაა საჭირო".</div>
+      </div>
+      <div class="book-year-text">2004</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">შერეკილი სტრიქონები</div>
+        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. „ეს მურმან ძველაიასთვის ერთგვარად საიუბილეო კრებულია".</div>
+      </div>
+      <div class="book-year-text">2005</div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-bar"></div>
+      <div class="book-info">
+        <div class="book-title-text">გვირილების მინდორი (რჩეულივით)</div>
+        <div class="book-desc">გამომცემლობა „ეგრისი". „ავტორი ამ წიგნს ტრაგიკულად დაღუპული მოსწავლის, სოსო სანაძის ხსოვნას უძღვნის".</div>
+      </div>
+      <div class="book-year-text">2007</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>მურმან ძველაია · ციფრული მემკვიდრეობა</p>
+</footer>
+
+</div>
+
+<script>
+function sw(name) {
+  ['home','poems','gallery','books'].forEach(function(p) {
+    document.getElementById('sec-'+p).classList.toggle('hidden', p !== name);
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a, i) {
+    var map = {home:0, poems:1, gallery:2, books:3};
+    a.classList.toggle('active', i === map[name]);
+  });
+}
+function tog(card) { card.classList.toggle('open'); }
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+</body>
+</html>
