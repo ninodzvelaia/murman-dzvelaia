@@ -3,212 +3,693 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>მურმან ძველაია — პოეტი</title>
+<title>მურმან ძველაია — პოეტი (1935—2012)</title>
+<meta name="description" content="მურმან ძველაია (1935—2012) — ქართველი პოეტი და პედაგოგი. ლექსები, ფოტოგალერეა და გამოცემული კრებულების ციფრული არქივი.">
+<meta name="author" content="მურმან ძველაია">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://ninodzvelaia.github.io/murman-dzvelaia/">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ka_GE">
+<meta property="og:site_name" content="მურმან ძველაია — ციფრული არქივი">
+<meta property="og:title" content="მურმან ძველაია — პოეტი (1935—2012)">
+<meta property="og:description" content="ქართველი პოეტისა და პედაგოგის ციფრული არქივი: ლექსები, ფოტოები და გამოცემული კრებულები.">
+<meta property="og:url" content="https://ninodzvelaia.github.io/murman-dzvelaia/">
+<meta property="og:image" content="https://ninodzvelaia.github.io/murman-dzvelaia/photos/main.jpeg">
+<meta property="og:image:alt" content="მურმან ძველაია">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239a6b3f'/%3E%3Ctext x='16' y='23' font-family='Sylfaen,Georgia,serif' font-size='19' fill='%23f6f1e8' text-anchor='middle'%3E%E1%83%9B%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500&family=Noto+Serif+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  /* თემა ვირჩევთ დახატვამდე, რომ ციმციმი არ მოხდეს */
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ==========  ტოკენები  ========== */
+:root {
+  --bg:        #f6f1e8;
+  --bg-elev:   #fffdf8;
+  --surface:   #ece3d5;
+  --ink:       #211a12;
+  --ink-2:     #4c4235;
+  --muted:     #857868;
+  --rule:      #ddd2c0;
+  --accent:    #9a6b3f;
+  --accent-2:  #c19a63;
+  --shadow:    0 24px 60px -32px rgba(58, 40, 22, 0.45);
+  --grain:     0.045;
+
+  --serif: 'Noto Serif Georgian', 'Sylfaen', Georgia, serif;
+  --sans:  'Noto Sans Georgian', 'Sylfaen', system-ui, sans-serif;
+  --maxw:  1080px;
+  --read:  68ch;
+  --pad:   clamp(1.15rem, 4vw, 2.5rem);
+  --r:     14px;
+}
+
+html[data-theme="dark"] {
+  --bg:        #14110d;
+  --bg-elev:   #1b1712;
+  --surface:   #241f18;
+  --ink:       #f3ece0;
+  --ink-2:     #d3c8b7;
+  --muted:     #9a8d7c;
+  --rule:      #322b22;
+  --accent:    #d2a469;
+  --accent-2:  #8d6c46;
+  --shadow:    0 24px 60px -32px rgba(0, 0, 0, 0.8);
+  --grain:     0.03;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg:        #14110d;
+    --bg-elev:   #1b1712;
+    --surface:   #241f18;
+    --ink:       #f3ece0;
+    --ink-2:     #d3c8b7;
+    --muted:     #9a8d7c;
+    --rule:      #322b22;
+    --accent:    #d2a469;
+    --accent-2:  #8d6c46;
+    --shadow:    0 24px 60px -32px rgba(0, 0, 0, 0.8);
+    --grain:     0.03;
+  }
+}
+
+/* ==========  ბაზისი  ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: #e8ddd0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 0.97rem + 0.16vw, 1.075rem);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s, color 0.4s;
 }
 
-.wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  background: #e8ddd0;
-  min-height: 100vh;
-  border-left: 1px solid #c8b89a;
-  border-right: 1px solid #c8b89a;
+/* ქაღალდის მარცვალი */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* NAV */
-nav {
-  background: #e8ddd0;
-  border-bottom: 1px solid #c8b89a;
-  padding: 0 2rem;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+h1, h2, h3 { color: var(--ink); font-weight: 600; line-height: 1.2; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--accent); color: var(--bg); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 300;
+  background: var(--bg-elev); color: var(--ink);
+  padding: 0.7rem 1.1rem; font-family: var(--sans); font-size: 0.85rem;
+  border: 1px solid var(--rule); border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ==========  ზედა ზოლი  ========== */
+.topbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 60;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
 }
-.nav-links { display: flex; gap: 2rem; }
-.nav-links a {
-  font-size: 13px;
-  color: #6a5a4a;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: color 0.2s;
+.topbar-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.55rem var(--pad);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
-.nav-links a:hover, .nav-links a.active { color: #1a0e04; border-bottom: 1px solid #8a6a4a; padding-bottom: 2px; }
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-  margin-left: auto;
-}
-.hamburger span { display: block; width: 22px; height: 1px; background: #6a5a4a; }
-
-.mobile-menu {
-  display: none;
-  background: #e0d4c4;
-  border-bottom: 1px solid #c8b89a;
-}
-.mobile-menu.open { display: block; }
-.mobile-menu a {
-  display: block;
-  padding: 0.9rem 2rem;
-  font-size: 15px;
-  color: #4a3828;
-  text-decoration: none;
-  border-bottom: 1px solid #d0c4b0;
+.brand {
+  font-family: var(--sans);
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.35s, transform 0.35s;
+  pointer-events: none;
 }
-.mobile-menu a:last-child { border-bottom: none; }
+.topbar.scrolled .brand { opacity: 1; transform: none; pointer-events: auto; }
 
-/* HERO */
-.hero-section {
+.nav {
   display: flex;
-  align-items: stretch;
-  min-height: 340px;
-  border-bottom: 1px solid #c8b89a;
+  gap: 0.15rem;
+  margin-left: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.hero-img { width: 240px; flex-shrink: 0; overflow: hidden; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.hero-text {
-  flex: 1;
-  padding: 2rem 1.75rem;
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: color 0.2s, background-color 0.2s;
+}
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="true"] { color: var(--ink); background: var(--surface); }
+
+.theme-toggle {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.3s;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent-2); transform: rotate(15deg); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.icon-moon { display: none; }
+html[data-theme="dark"] .icon-sun { display: none; }
+html[data-theme="dark"] .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .icon-sun { display: none; }
+  html:not([data-theme="light"]) .icon-moon { display: block; }
+}
+
+/* ==========  ჰერო  ========== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 330px);
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: center;
+  padding: clamp(2.75rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 8.5vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  color: var(--ink);
+}
+.hero-years {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 0.9rem;
+}
+.hero-quote {
+  margin-top: 1.9rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+  max-width: 38ch;
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+.tag {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.28rem 0.85rem;
+}
+
+.portrait {
+  position: relative;
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+.portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.92);
+}
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/* ==========  სექციები  ========== */
+section[id] { scroll-margin-top: 72px; }
+.band { padding: clamp(2.75rem, 7vw, 5rem) 0; border-top: 1px solid var(--rule); }
+.band-alt { background: color-mix(in srgb, var(--surface) 45%, var(--bg)); }
+
+.section-head {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.85rem;
-  border-left: 1px solid #c8b89a;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
-.hero-name { font-size: 30px; font-weight: 700; color: #1a0e04; letter-spacing: 0.04em; line-height: 1.2; }
-.hero-years { font-size: 12px; color: #8a7a6a; letter-spacing: 0.18em; }
-.hero-line { width: 36px; height: 1px; background: #a08060; }
-.hero-tags { display: flex; gap: 7px; flex-wrap: wrap; }
-.hero-tag { font-size: 11px; color: #6a5a4a; border: 1px solid #b8a888; padding: 4px 12px; border-radius: 20px; background: #f0e8dc; }
-.hero-quote { font-size: 14px; color: #6a5a4a; line-height: 1.9; font-style: italic; border-left: 2px solid #b8a070; padding-left: 0.9rem; }
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.section-head .line { flex: 1; height: 1px; background: var(--rule); }
+.section-head .count { font-family: var(--sans); font-size: 0.76rem; color: var(--muted); }
 
-/* CONTENT */
-.content { padding: 2rem; background: #f5ede0; }
-.section-label { font-size: 10px; letter-spacing: 0.14em; color: #9a8a78; text-transform: uppercase; margin-bottom: 1rem; }
-.bio-block { border-left: 2px solid #c0a880; padding-left: 1.2rem; color: #4a3828; font-size: 16px; line-height: 2; }
+/* ==========  ბიოგრაფია  ========== */
+.bio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.bio-text { max-width: var(--read); font-size: 1.075rem; line-height: 2; color: var(--ink-2); }
+.bio-text::first-letter {
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding: 0.08em 0.1em 0 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+.facts {
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 1.35rem 1.5rem;
+  background: var(--bg-elev);
+  display: grid;
+  gap: 1.05rem;
+}
+.fact dt {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.fact dd { font-size: 0.98rem; color: var(--ink); line-height: 1.5; }
 
-/* POEMS */
-.poem-card { border: 1px solid #d4c4a8; border-radius: 6px; margin-bottom: 12px; background: #ede0ce; overflow: hidden; }
-.poem-header { padding: 1rem 1.4rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-.poem-title { font-size: 17px; color: #2a1a0a; }
-.poem-toggle { font-size: 20px; color: #a08060; transition: transform 0.3s; line-height: 1; }
-.poem-body { display: none; padding: 0 1.4rem 1.4rem; border-top: 1px solid #d4c4a8; }
-.poem-body pre { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; color: #4a3828; line-height: 2.1; white-space: pre-wrap; padding-top: 1.2rem; }
-.poem-card.open .poem-body { display: block; }
-.poem-card.open .poem-toggle { transform: rotate(45deg); }
+/* ==========  ლექსები  ========== */
+.search-wrap { position: relative; max-width: var(--read); margin-bottom: 1.5rem; }
+.search-wrap svg {
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  width: 15px; height: 15px; color: var(--muted); pointer-events: none;
+}
+.poem-search {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.6rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  transition: border-color 0.2s;
+}
+.poem-search:focus { border-color: var(--accent-2); }
+.poem-search::placeholder { color: var(--muted); }
+.poem-empty { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); padding: 1.5rem 0; }
 
-/* GALLERY */
-.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.gallery-item { aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; border: 1px solid #c8b89a; background: #ddd0be; cursor: pointer; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.3s; }
-.gallery-item:hover img { transform: scale(1.04); }
+.poem-list { max-width: var(--read); border-top: 1px solid var(--rule); }
+.poem {
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 0.25s;
+}
+.poem:hover { background: color-mix(in srgb, var(--surface) 40%, transparent); }
+.poem-header {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.15rem 0.9rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+.poem-num {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  min-width: 1.6rem;
+}
+.poem-main { flex: 1; min-width: 0; }
+.poem-title { display: block; font-size: 1.1rem; color: var(--ink); font-weight: 500; }
+.poem-preview {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: opacity 0.25s;
+}
+.poem.open .poem-preview { opacity: 0; height: 0; margin: 0; }
+.poem-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+.poem.open .poem-toggle { transform: rotate(45deg); }
+.poem-body { display: none; padding: 0 0.9rem 1.9rem 3.4rem; }
+.poem.open .poem-body { display: block; animation: fade 0.4s ease; }
+.poem-body pre {
+  font-family: var(--serif);
+  font-size: 1.03rem;
+  line-height: 2.15;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+}
+.poem-permalink {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+.poem-permalink:hover { color: var(--accent); border-color: var(--accent-2); }
 
-/* BOOKS */
-.book-row { display: flex; align-items: flex-start; gap: 14px; padding: 1rem 0; border-bottom: 1px solid #d4c4a8; }
-.book-row:last-child { border-bottom: none; }
-.book-bar { width: 4px; min-height: 44px; background: #b8a070; border-radius: 2px; flex-shrink: 0; margin-top: 3px; }
-.book-info { flex: 1; }
-.book-title-text { font-size: 15px; color: #2a1a0a; margin-bottom: 4px; }
-.book-desc { font-size: 13px; color: #7a6a58; line-height: 1.75; font-style: italic; }
-.book-year-text { font-size: 13px; color: #a08060; letter-spacing: 0.06em; white-space: nowrap; padding-top: 2px; }
+@keyframes fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-/* FOOTER */
-footer { background: #e8ddd0; border-top: 1px solid #c8b89a; padding: 1.5rem; text-align: center; }
-footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
+/* ==========  გალერეა  ========== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: none;
+  padding: 0;
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow: 0 10px 30px -22px rgba(40, 26, 12, 0.6);
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.4s;
+  filter: saturate(0.9);
+}
+.gallery-item:hover img { transform: scale(1.045); filter: saturate(1); }
 
-.hidden { display: none; }
+/* ==========  კრებულები  ========== */
+.books { position: relative; max-width: 760px; }
+.books::before {
+  content: '';
+  position: absolute;
+  left: 4.4rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: var(--rule);
+}
+.book {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  gap: 1.6rem;
+  padding: 1.15rem 0;
+}
+.book-year {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+.book::before {
+  content: '';
+  position: absolute;
+  left: calc(4.4rem - 3px);
+  top: 1.55rem;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--accent-2);
+  transition: background-color 0.25s;
+}
+.book:hover::before { background: var(--accent); }
+.book-title { font-size: 1.08rem; color: var(--ink); font-weight: 500; margin-bottom: 0.35rem; }
+.book-desc { font-size: 0.94rem; color: var(--muted); line-height: 1.8; }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  nav { padding: 0 1.25rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-section { flex-direction: column; min-height: auto; }
-  .hero-img { width: 100%; height: 280px; }
-  .hero-text { border-left: none; border-top: 1px solid #c8b89a; padding: 1.5rem 1.25rem; }
-  .hero-name { font-size: 26px; }
-  .content { padding: 1.5rem 1.25rem; }
+/* ==========  Lightbox  ========== */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: color-mix(in srgb, #100b06 94%, transparent);
+  backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center;
+  padding: clamp(2.5rem, 6vw, 4rem) 1rem;
+}
+.lightbox.open { display: flex; animation: fade 0.25s ease; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+.lb-btn {
+  position: absolute;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  background: rgba(255, 250, 242, 0.1);
+  border: 1px solid rgba(255, 250, 242, 0.22);
+  border-radius: 50%;
+  color: #f6f1e8;
+  font-size: 1.35rem; line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.lb-btn:hover { background: rgba(255, 250, 242, 0.22); }
+.lb-close { top: 1.1rem; right: 1.1rem; }
+.lb-prev { left: 1.1rem; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 1.1rem; top: 50%; transform: translateY(-50%); }
+.lb-count {
+  position: absolute; bottom: 1.3rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em;
+  color: rgba(246, 241, 232, 0.75);
+}
+
+/* ==========  ზემოთ  ========== */
+.to-top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 55;
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--bg-elev);
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, color 0.2s;
+  box-shadow: var(--shadow);
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { color: var(--accent); }
+
+/* ==========  ფუტერი  ========== */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2.5rem 0 3rem;
+  text-align: center;
+}
+footer p { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
+footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); margin-bottom: 0.4rem; }
+
+/* ==========  გამოჩენა სქროლზე  ========== */
+.reveal { opacity: 0; transform: translateY(14px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1); }
+
+.hidden { display: none !important; }
+
+/* ==========  ადაპტაცია  ========== */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 2.25rem; }
+  .portrait { max-width: 330px; }
+  .bio-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .topbar-inner { flex-wrap: wrap; row-gap: 0.35rem; }
+  .brand { opacity: 1; transform: none; pointer-events: auto; }
+  .nav { order: 3; width: 100%; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 0.25rem; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .book-row { gap: 10px; }
+  .hero-quote { max-width: none; }
+  .nav a { font-size: 0.78rem; padding: 0.35rem 0.5rem; }
+  .books::before { left: 3.2rem; }
+  .book { grid-template-columns: 3.2rem 1fr; gap: 1.1rem; }
+  .book::before { left: calc(3.2rem - 3px); }
+  .poem-body { padding-left: 0.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ==========  ბეჭდვა  ========== */
+@media print {
+  .topbar, .lightbox, .to-top, .search-wrap, .poem-toggle, .poem-permalink, .portrait, footer { display: none !important; }
+  body { background: #fff; color: #000; }
+  body::after { display: none; }
+  .band { border: none; padding: 1rem 0; }
+  .poem-body { display: block !important; padding-left: 0; }
+  .poem { page-break-inside: avoid; }
+  .poem-preview { display: none; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip-link" href="#main">გადასვლა ძირითად შიგთავსზე</a>
 
-<nav>
-  <div class="nav-links" id="navLinks">
-    <a href="#" class="active" onclick="sw('home');return false;">მთავარი</a>
-    <a href="#" onclick="sw('poems');return false;">ლექსები</a>
-    <a href="#" onclick="sw('gallery');return false;">გალერეა</a>
-    <a href="#" onclick="sw('books');return false;">კრებულები</a>
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">მურმან ძველაია</a>
+    <nav class="nav" aria-label="სექციები">
+      <a href="#biography">ბიოგრაფია</a>
+      <a href="#poems">ლექსები</a>
+      <a href="#gallery">გალერეა</a>
+      <a href="#books">კრებულები</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="ღამის რეჟიმის ჩართვა">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/>
+      </svg>
+    </button>
   </div>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#" onclick="sw('home');closeMenu();return false;">მთავარი</a>
-  <a href="#" onclick="sw('poems');closeMenu();return false;">ლექსები</a>
-  <a href="#" onclick="sw('gallery');closeMenu();return false;">გალერეა</a>
-  <a href="#" onclick="sw('books');closeMenu();return false;">კრებულები</a>
-</div>
+<main id="main">
 
-<!-- HOME -->
-<div id="sec-home">
-  <div class="hero-section">
-    <div class="hero-img">
-      <img src="photos/main.jpeg" alt="მურმან ძველაია">
-    </div>
+<!-- ჰერო -->
+<div class="wrap" id="top">
+  <div class="hero">
     <div class="hero-text">
-      <div class="hero-name">მურმან ძველაია</div>
-      <div class="hero-years">1935 — 2012</div>
-      <div class="hero-line"></div>
+      <p class="hero-eyebrow">ციფრული არქივი</p>
+      <h1>მურმან<br>ძველაია</h1>
+      <p class="hero-years">1935 — 2012</p>
       <div class="hero-tags">
-        <span class="hero-tag">პოეტი</span>
-        <span class="hero-tag">პედაგოგი</span>
+        <span class="tag">პოეტი</span>
+        <span class="tag">პედაგოგი</span>
+        <span class="tag">10 კრებული</span>
       </div>
-      <div class="hero-quote">„რამდენი ფიქრი, რამდენი სევდა<br>ნელა გადადის ენგურის ხიდზე."</div>
+      <blockquote class="hero-quote">„რამდენი ფიქრი, რამდენი სევდა<br>ნელა გადადის ენგურის ხიდზე.“</blockquote>
     </div>
-  </div>
-  <div class="content">
-    <div class="section-label">ბიოგრაფია</div>
-    <div class="bio-block">
-      მურმან ძველაია 1935 წლის 20 სექტემბერს აბაშაში დაიბადა. გორის პედაგოგიური ინსტიტუტის დამთავრების შემდეგ საცხოვრებლად აფხაზეთში გადავიდა და გალის რაიონის ერთ-ერთ სკოლაში მასწავლებლად მუშაობდა. ჯერ კიდევ ომამდე მისი რამდენიმე პოეტური კრებული გამოიცა.
-      <br><br>
-      აფხაზეთი პოეტს არც ომის შემდეგ დაუტოვებია — იგი სიცოცხლის ბოლომდე სოფელ პირველ გალში დარჩა და ნარინჯოვანის საშუალო სკოლაში მუშაობა გააგრძელა. 2002 წელს მისი რჩეული, ,,გვირილების მინდორი" გამოიცა. პოეტი 2012 წელს, 77 წლის ასაკში გარდაიცვალა. დაკრძალულია სოფელ პირველ გალში.
-    </div>
+    <figure class="portrait reveal">
+      <img src="photos/thumbs/main.jpeg" alt="პოეტი მურმან ძველაია" width="600" height="800" fetchpriority="high">
+    </figure>
   </div>
 </div>
 
-<!-- POEMS -->
-<div id="sec-poems" class="hidden">
-  <div class="content">
-    <div class="section-label">ლექსები</div>
+<!-- ბიოგრაფია -->
+<section class="band" id="biography">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ბიოგრაფია</span>
+      <span class="line"></span>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-text reveal">მურმან ძველაია 1935 წლის 20 სექტემბერს აბაშაში დაიბადა. გორის პედაგოგიური ინსტიტუტის დამთავრების შემდეგ საცხოვრებლად აფხაზეთში გადავიდა და გალის რაიონის ერთ-ერთ სკოლაში მასწავლებლად მუშაობდა. ჯერ კიდევ ომამდე მისი რამდენიმე პოეტური კრებული გამოიცა.
+      <br><br>
+      აფხაზეთი პოეტს არც ომის შემდეგ დაუტოვებია — იგი სიცოცხლის ბოლომდე სოფელ პირველ გალში დარჩა და ნარინჯოვანის საშუალო სკოლაში მუშაობა გააგრძელა. 2002 წელს მისი რჩეული, „გვირილების მინდორი“ გამოიცა. პოეტი 2012 წელს, 77 წლის ასაკში გარდაიცვალა. დაკრძალულია სოფელ პირველ გალში.</div>
+      <dl class="facts reveal">
+        <div class="fact"><dt>დაბადება</dt><dd>1935 წლის 20 სექტემბერი, აბაშა</dd></div>
+        <div class="fact"><dt>ცხოვრება და მოღვაწეობა</dt><dd>აფხაზეთი, სოფელი პირველი გალი</dd></div>
+        <div class="fact"><dt>კრებულები</dt><dd>10 წიგნი, 1978—2007</dd></div>
+        <div class="fact"><dt>გარდაცვალება</dt><dd>2012, სოფელი პირველი გალი</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">რამდენი ფიქრი</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>მთა დაუძლურდა, ვით ლადო ― სენთან...
+<!-- ლექსები -->
+<section class="band band-alt" id="poems">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ლექსები</span>
+      <span class="line"></span>
+      <span class="count" id="poemCount"></span>
+    </div>
+    <div class="search-wrap reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <label class="skip-link" for="poemSearch">ლექსების ძებნა</label>
+      <input type="search" id="poemSearch" class="poem-search" placeholder="ძებნა სათაურში ან ტექსტში…" autocomplete="off">
+    </div>
+    <p class="poem-empty hidden" id="poemEmpty">ვერაფერი მოიძებნა.</p>
+    <div class="poem-list reveal">
+      <article class="poem" id="poem-1">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-1">
+          <span class="poem-num">01</span>
+          <span class="poem-main">
+            <span class="poem-title">რამდენი ფიქრი</span>
+            <span class="poem-preview">მთა დაუძლურდა, ვით ლადო ― სენთან...</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-1">
+          <pre>მთა დაუძლურდა, ვით ლადო ― სენთან...
 კაცს ცოტას ნახავთ იმედით ფხიზელს.
 რამდენი ფიქრი, რამდენი სევდა
 ნელა გადადის ენგურის ხიდზე.
@@ -223,33 +704,45 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 არ არის დარი არც აქ, არც იქით,
 გვწუწავს და გვწუწავს მიზეზ და მიზეზ...
 რამდენი სევდა, რამდენი ფიქრი
-ნელა გადადის ენგურის ხიდზე.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">ერთ კარგ პოეტთან</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>ერთ კარგ პოეტთან, უფრო ზუსტად - ჯავახაძესთან
+ნელა გადადის ენგურის ხიდზე.</pre>
+          <a class="poem-permalink" href="#poem-1">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-2">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-2">
+          <span class="poem-num">02</span>
+          <span class="poem-main">
+            <span class="poem-title">ერთ კარგ პოეტთან</span>
+            <span class="poem-preview">ერთ კარგ პოეტთან, უფრო ზუსტად - ჯავახაძესთან</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-2">
+          <pre>ერთ კარგ პოეტთან, უფრო ზუსტად - ჯავახაძესთან
 არ ირჩეოდა არც მთაწმინდა, ჯავა, მაცესტა...
 მე და ინჯია მის ოთახში ჩუმად ვისხედით,
-ჩვენი გორული „მერნის" ქებას რიდით ვისმენდით.
-„ჩვენ შორის დარჩეს, მინდა თქვენი ვადიდო სტარტი"
-და გითხრა, ჯემალ, რომ „რითმების ხარ დიდოსტატი".
+ჩვენი გორული „მერნის“ ქებას რიდით ვისმენდით.
+„ჩვენ შორის დარჩეს, მინდა თქვენი ვადიდო სტარტი“
+და გითხრა, ჯემალ, რომ „რითმების ხარ დიდოსტატი“.
 მას შემდეგ ბევრი ლერწმის ყელი გამოითალა,
 ვისთვის იავდრა და ვისთვისაც გამოიდარა,
 კიდევ სხვათათვის - არაფერი გამოვიდა რა...
 შენი კი, ჯემალ, - კვლავაც მინდა ვადიდო სტარტი -
-რომ საქართველოს სიყვარულშიც ხარ დიდოსტატი.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">დიდოსტატის უკანასკნელი წუთები</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>კოლხურ კოშკში სტუმრებია, რომ წვა აღარ შენელდეს,
+რომ საქართველოს სიყვარულშიც ხარ დიდოსტატი.</pre>
+          <a class="poem-permalink" href="#poem-2">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-3">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-3">
+          <span class="poem-num">03</span>
+          <span class="poem-main">
+            <span class="poem-title">დიდოსტატის უკანასკნელი წუთები</span>
+            <span class="poem-preview">კოლხურ კოშკში სტუმრებია, რომ წვა აღარ შენელდეს,</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-3">
+          <pre>კოლხურ კოშკში სტუმრებია, რომ წვა აღარ შენელდეს,
 მობრძანება სურვებია დავით აღმაშენებელს.
 არ ღალატობს ასაკი ჯერ ხანჯლით პირგაბასრულით,
 ჩამოსულა არსაკიძე და კვეტარის ასული.
@@ -259,10 +752,10 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 საქართველოს ისტორია ჩამუხლულა საწოლთან.
 შავი ფიქრით მოღობილი ― თრთიან ბედისწერანი
 და მამალი ხოხობივით სიკვდილს ებრძვის მწერალი.
-„ფეხზე წამომაყენეთო" ― დიდოსტატის ჩურჩულმა
+„ფეხზე წამომაყენეთო“ ― დიდოსტატის ჩურჩულმა
 გაიარა ყველას გულში სიკვდილივით უჩუმრად.
 კონსტანტინეს ასე ნებავს, ღმერთო ღმერთკაცს მოხედე.
-და კოლხურ კოშკს გარს ევლება „ვაი, ნანა" კოლხეთის.
+და კოლხურ კოშკს გარს ევლება „ვაი, ნანა“ კოლხეთის.
 წინაპრები ემზეურა... სუსტი, ღონემიხდილი
 ამბობს: მხოლოდ ზეზეურად, ზეზეურად სიკვდილი!...
 დროშასავით აიტაცეს, ფეხზე წამოაყენეს.
@@ -270,15 +763,21 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 და გათავდა დიდოსტატი ― მყინვარწვერის ჭაღარა,
 ერთიანმა საქართველომ თავი მის წინ დახარა
 ცა გვრინავდა მეწამული, სუნი იდგა ორღობის
-და დაეცა წიწამურის ველს მამალი ხოხობი...</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">ორად გაყოფილი</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>გადამრევს ეს ქარი კოლხური,
+და დაეცა წიწამურის ველს მამალი ხოხობი...</pre>
+          <a class="poem-permalink" href="#poem-3">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-4">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-4">
+          <span class="poem-num">04</span>
+          <span class="poem-main">
+            <span class="poem-title">ორად გაყოფილი</span>
+            <span class="poem-preview">გადამრევს ეს ქარი კოლხური,</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-4">
+          <pre>გადამრევს ეს ქარი კოლხური,
 მეწყერი გადმოქუხს ცით.
 ცის თეთრი კარები მოხურეს,
 გათენდა და შავად ცრის.
@@ -293,15 +792,21 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 ფესვივით მოთხარეს ეგ გული,
 მზე მძიმედ ჩადის და წვიმს.
 ორად გაყოფილი ენგური
-რა მდორედ მიიწევს წინ.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">ვეღარ გამიხსნის</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>ვეღარ გამიხსნის
+რა მდორედ მიიწევს წინ.</pre>
+          <a class="poem-permalink" href="#poem-4">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-5">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-5">
+          <span class="poem-num">05</span>
+          <span class="poem-main">
+            <span class="poem-title">ვეღარ გამიხსნის</span>
+            <span class="poem-preview">ვეღარ გამიხსნის</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-5">
+          <pre>ვეღარ გამიხსნის
 ზოგჯერ დანა პირს,
 ერთს გადავხედავ
 მტებს, შენისლულებს.
@@ -332,15 +837,21 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 მამულო ჩემო,
 ისე მოვკვდები,
 ვერ შეგისრულებ,
-ალბათ, დანაპირს.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">სამი პოეტი</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>ღელავს არაგვის მთვარე ბარჩხალა‒
+ალბათ, დანაპირს.</pre>
+          <a class="poem-permalink" href="#poem-5">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-6">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-6">
+          <span class="poem-num">06</span>
+          <span class="poem-main">
+            <span class="poem-title">სამი პოეტი</span>
+            <span class="poem-preview">ღელავს არაგვის მთვარე ბარჩხალა‒</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-6">
+          <pre>ღელავს არაგვის მთვარე ბარჩხალა‒
 მიწის და ზეცის ნაზი კავშირი.
 მთვარის სხივებით ლექსს წერს ბაჩანა,
 ქომაგობს თედო რაზიკაშვილი.
@@ -351,15 +862,21 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 ო, ჩარგლის მთებო, თქვენი მონა ვარ,
 მღვრიე არაგვმაც წარბი აშვილდა.
 თქვენს მძიმე წარსულს, ნათელ მომავალს
-უმღერდა ჩანგი რაზიკაშვილთა.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">ტიციან ტაბიძეს</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>სულის ზიარო, ვისთან მზიანობ,
+უმღერდა ჩანგი რაზიკაშვილთა.</pre>
+          <a class="poem-permalink" href="#poem-6">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-7">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-7">
+          <span class="poem-num">07</span>
+          <span class="poem-main">
+            <span class="poem-title">ტიციან ტაბიძეს</span>
+            <span class="poem-preview">სულის ზიარო, ვისთან მზიანობ,</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-7">
+          <pre>სულის ზიარო, ვისთან მზიანობ,
 ასე უღმერთოდ რატომ დუმხარო.
 სად დაიკარგე, შე მადლიანო,
 შე არაგვივით ლექსო მქუხარო.
@@ -370,15 +887,21 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 ერთი სული მაქვს როდის მეწვევით,
 დრო ელოდება ახალ ტიტანებს.
 მოდით, მოვარდით, როგორც მეწყერი,
-ცოცხლად დამმარხეთ და გამიტანეთ.</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">ვედრება</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>რისიც მეშინოდა‒ის გაბრწყინდა,
+ცოცხლად დამმარხეთ და გამიტანეთ.</pre>
+          <a class="poem-permalink" href="#poem-7">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-8">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-8">
+          <span class="poem-num">08</span>
+          <span class="poem-main">
+            <span class="poem-title">ვედრება</span>
+            <span class="poem-preview">რისიც მეშინოდა‒ის გაბრწყინდა,</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-8">
+          <pre>რისიც მეშინოდა‒ის გაბრწყინდა,
 რა მოხდა, რა დავუმშვენე...
 ღმერთო, უშველე საქართველოს,
 ღმერთო, საქართველოს უშველე;
@@ -387,159 +910,326 @@ footer p { font-size: 12px; color: #9a8a78; letter-spacing: 0.08em; }
 ღმერთო, უშველე საქართველოს,
 ღმერთო, საქართველოს უშველე.
 არიდე სიტყვებს დენთიანებს,―
-მიწებს რა ხარბად იყოფენ...</pre></div>
-    </div>
-
-    <div class="poem-card">
-      <div class="poem-header" onclick="tog(this.parentElement)">
-        <div class="poem-title">თუ ვერ მოვესწარი</div>
-        <div class="poem-toggle">+</div>
-      </div>
-      <div class="poem-body"><pre>ჯერ სიკვდილი აღარ მინდა, ის დღე როგორ არ ვიხილო.
+მიწებს რა ხარბად იყოფენ...</pre>
+          <a class="poem-permalink" href="#poem-8">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
+      <article class="poem" id="poem-9">
+        <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-9">
+          <span class="poem-num">09</span>
+          <span class="poem-main">
+            <span class="poem-title">თუ ვერ მოვესწარი</span>
+            <span class="poem-preview">ჯერ სიკვდილი აღარ მინდა, ის დღე როგორ არ ვიხილო.</span>
+          </span>
+          <span class="poem-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="poem-body" id="poem-body-9">
+          <pre>ჯერ სიკვდილი აღარ მინდა, ის დღე როგორ არ ვიხილო.
 გადმომყურებს მაღალი მთა, მოიტაცა მარიხი რომ.
 ბარისა თუ მთის შვილებით არ ჩამცხრალან ის ჟინები,
 გამთლიანდი საქართველოვ! მოვრბოდი და ვყიჟინებდი.
 ამას თუ ვერ მოვესწარი, ერთს გთხოვ, ჩემო შვილიშვილო:
 მივიწყების ტანსაბურავს მომახურავს ფინიში რომ.
 მოირბინე ჩემს საფლავთან, ფრთა შეგასხას განთიადმა,
-და ჩამძახე: ჩემო ბაბუ, საქართველო გამთლიანდა!...</pre></div>
-    </div>
-
-  </div>
-</div>
-
-<!-- GALLERY -->
-<div id="sec-gallery" class="hidden">
-  <div class="content">
-    <div class="section-label">ფოტოგალერეა</div>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="photos/photo1.jpeg" alt="მურმან ძველაია"></div>
-      <div class="gallery-item"><img src="photos/photo2.jpeg" alt="მურმან ძველაია"></div>
-      <div class="gallery-item"><img src="photos/photo3.jpeg" alt="მურმან ძველაია"></div>
-      <div class="gallery-item"><img src="photos/photo4.jpeg" alt="მურმან ძველაია"></div>
-      <div class="gallery-item"><img src="photos/photo5.jpeg" alt="მურმან ძველაია"></div>
-      <div class="gallery-item"><img src="photos/main.jpeg" alt="მურმან ძველაია"></div>
+და ჩამძახე: ჩემო ბაბუ, საქართველო გამთლიანდა!...</pre>
+          <a class="poem-permalink" href="#poem-9">ბმული ამ ლექსზე</a>
+        </div>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
-<!-- BOOKS -->
-<div id="sec-books" class="hidden">
-  <div class="content">
-    <div class="section-label">გამოცემული კრებულები</div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">მონატრება</div>
-        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „მონატრება" პოეტის პირველი წიგნია. „მამულისადმი თავდადება, ჩვენი წარსული და აწმყო, ფიქრი მომავალზე, ომის დღეების გამოძახილი, სიყვარული და მეგობრობა - აი, რა ასულდგმულებს ახალგაზრდა პოეტის ლექსებს.</div>
-      </div>
-      <div class="book-year-text">1978</div>
+<!-- გალერეა -->
+<section class="band" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ფოტოგალერეა</span>
+      <span class="line"></span>
+      <span class="count">6 ფოტო</span>
     </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">მწიფე ველები</div>
-        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „წინამდებარე კრებული მურმან ძველაიას მეორე წიგნია. სიყვარულით წერს იგი სამშობლოზე, მშობლიურ მიწა-წყალზე, მისთვის ძვირფას ადამიანებზე. პოეტის ლექსებისთვის ნიშანდობლივია გულწრფელობა".</div>
-      </div>
-      <div class="book-year-text">1982</div>
+    <div class="gallery-grid reveal">
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 1"><img src="photos/thumbs/photo1.jpeg" data-full="photos/photo1.jpeg" alt="მურმან ძველაია, ფოტო 1" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 2"><img src="photos/thumbs/photo2.jpeg" data-full="photos/photo2.jpeg" alt="მურმან ძველაია, ფოტო 2" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 3"><img src="photos/thumbs/photo3.jpeg" data-full="photos/photo3.jpeg" alt="მურმან ძველაია, ფოტო 3" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 4"><img src="photos/thumbs/photo4.jpeg" data-full="photos/photo4.jpeg" alt="მურმან ძველაია, ფოტო 4" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 5"><img src="photos/thumbs/photo5.jpeg" data-full="photos/photo5.jpeg" alt="მურმან ძველაია, ფოტო 5" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 6"><img src="photos/thumbs/main.jpeg" data-full="photos/main.jpeg" alt="მურმან ძველაია, ფოტო 6" loading="lazy" decoding="async" width="600" height="800"></button>
     </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">ზღვა და გული</div>
-        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „ზღვა და გული" მურმან ძველაიას მესამე კრებულია. „პოეტი წერს სიყვარულზე და მეგობრობაზე, დღევანდელობა და ისტორიულ წარსულზე, გულწრფელად ახარებს ადრე მიტოვებული სოფლის აღორძინება, ადიდებს მშრომელი კაცის მარჯვენას".</div>
-      </div>
-      <div class="book-year-text">1985</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">სიმღერის სიმწვანე</div>
-        <div class="book-desc">გამომცემლობა „ალაშარა", სოხუმი. „მურმან ძველაიას წიგნში შეტანილია ბოლო წლებში დაწერილი გამოუქვეყნებელი ლექსები".</div>
-      </div>
-      <div class="book-year-text">1991</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">მძიმე ვალსი</div>
-        <div class="book-desc">გამომცემლობა „განათლება", თბილისი. პოეტისთვის ეს წიგნი რიგით მეხუთეა. „ყურადღებას იქცევს ვერსიფიკაციული ძიებით, თავისებური პოეტური ხედვითა თუ მეტაფორული აზროვნებით".</div>
-      </div>
-      <div class="book-year-text">2000</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">იმედების გვირგვინი</div>
-        <div class="book-desc">ავტორის რიგით მეექვსე წიგნი. „ბოლო დროის შემოქმედებას ცრემლის მდუღარებასავით შეერია აფხაზეთის ტრაგედიის სატკივარი. ნათელ, კაშკაშა ფერებს „მსუყე შავი" სევდასავით შეენივთა და თითქოს კიდევ უფრო გულმისავალი გახდა მათი პოეტური იმპულსები".</div>
-      </div>
-      <div class="book-year-text">2002</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">აბაშა და აბაშელები</div>
-        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. კრებული რიგით მეშვიდე წიგნია. „გულწრფელი მოფერება, სიყვარულის ხმამაღლა გაცხადება ამ მხარეში მცხოვრებლებისადმი. აქ საბჭოური პერიოდის ლექსებიცაა შეტანილი. ძველი და ახალი ყოფა-ცხოვრება - ორივე - პოეტის გულისგულშია გავლილი და ეს ასახულია კიდეც ამ კრებულში".</div>
-      </div>
-      <div class="book-year-text">2003</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">წარსული აწმყოში</div>
-        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. პოეტისთვის ეს წიგნი რიგით მერვეა. „მას გულისგულში სტკივა თავისი ქვეყნის ტკივილი და სჯერა, რომ ამ ტკივილის მოსაშუშებლად ერთად დგომა და ეროვნული სულიერებისა და ცნობიერების გაჯანსაღებაა საჭირო".</div>
-      </div>
-      <div class="book-year-text">2004</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">შერეკილი სტრიქონები</div>
-        <div class="book-desc">გამომცემლობა „ეგრისი", თბილისი. „ეს მურმან ძველაიასთვის ერთგვარად საიუბილეო კრებულია".</div>
-      </div>
-      <div class="book-year-text">2005</div>
-    </div>
-
-    <div class="book-row">
-      <div class="book-bar"></div>
-      <div class="book-info">
-        <div class="book-title-text">გვირილების მინდორი (რჩეულივით)</div>
-        <div class="book-desc">გამომცემლობა „ეგრისი". „ავტორი ამ წიგნს ტრაგიკულად დაღუპული მოსწავლის, სოსო სანაძის ხსოვნას უძღვნის".</div>
-      </div>
-      <div class="book-year-text">2007</div>
-    </div>
-
   </div>
-</div>
+</section>
+
+<!-- კრებულები -->
+<section class="band band-alt" id="books">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">გამოცემული კრებულები</span>
+      <span class="line"></span>
+      <span class="count">1978 — 2007</span>
+    </div>
+    <div class="books reveal">
+      <article class="book">
+        <div class="book-year">1978</div>
+        <div>
+          <h3 class="book-title">მონატრება</h3>
+          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „მონატრება“ პოეტის პირველი წიგნია. „მამულისადმი თავდადება, ჩვენი წარსული და აწმყო, ფიქრი მომავალზე, ომის დღეების გამოძახილი, სიყვარული და მეგობრობა - აი, რა ასულდგმულებს ახალგაზრდა პოეტის ლექსებს.“</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">1982</div>
+        <div>
+          <h3 class="book-title">მწიფე ველები</h3>
+          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „წინამდებარე კრებული მურმან ძველაიას მეორე წიგნია. სიყვარულით წერს იგი სამშობლოზე, მშობლიურ მიწა-წყალზე, მისთვის ძვირფას ადამიანებზე. პოეტის ლექსებისთვის ნიშანდობლივია გულწრფელობა“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">1985</div>
+        <div>
+          <h3 class="book-title">ზღვა და გული</h3>
+          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „ზღვა და გული“ მურმან ძველაიას მესამე კრებულია. „პოეტი წერს სიყვარულზე და მეგობრობაზე, დღევანდელობა და ისტორიულ წარსულზე, გულწრფელად ახარებს ადრე მიტოვებული სოფლის აღორძინება, ადიდებს მშრომელი კაცის მარჯვენას“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">1991</div>
+        <div>
+          <h3 class="book-title">სიმღერის სიმწვანე</h3>
+          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „მურმან ძველაიას წიგნში შეტანილია ბოლო წლებში დაწერილი გამოუქვეყნებელი ლექსები“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2000</div>
+        <div>
+          <h3 class="book-title">მძიმე ვალსი</h3>
+          <p class="book-desc">გამომცემლობა „განათლება“, თბილისი. პოეტისთვის ეს წიგნი რიგით მეხუთეა. „ყურადღებას იქცევს ვერსიფიკაციული ძიებით, თავისებური პოეტური ხედვითა თუ მეტაფორული აზროვნებით“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2002</div>
+        <div>
+          <h3 class="book-title">იმედების გვირგვინი</h3>
+          <p class="book-desc">ავტორის რიგით მეექვსე წიგნი. „ბოლო დროის შემოქმედებას ცრემლის მდუღარებასავით შეერია აფხაზეთის ტრაგედიის სატკივარი. ნათელ, კაშკაშა ფერებს „მსუყე შავი“ სევდასავით შეენივთა და თითქოს კიდევ უფრო გულმისავალი გახდა მათი პოეტური იმპულსები“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2003</div>
+        <div>
+          <h3 class="book-title">აბაშა და აბაშელები</h3>
+          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. კრებული რიგით მეშვიდე წიგნია. „გულწრფელი მოფერება, სიყვარულის ხმამაღლა გაცხადება ამ მხარეში მცხოვრებლებისადმი. აქ საბჭოური პერიოდის ლექსებიცაა შეტანილი. ძველი და ახალი ყოფა-ცხოვრება - ორივე - პოეტის გულისგულშია გავლილი და ეს ასახულია კიდეც ამ კრებულში“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2004</div>
+        <div>
+          <h3 class="book-title">წარსული აწმყოში</h3>
+          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. პოეტისთვის ეს წიგნი რიგით მერვეა. „მას გულისგულში სტკივა თავისი ქვეყნის ტკივილი და სჯერა, რომ ამ ტკივილის მოსაშუშებლად ერთად დგომა და ეროვნული სულიერებისა და ცნობიერების გაჯანსაღებაა საჭირო“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2005</div>
+        <div>
+          <h3 class="book-title">შერეკილი სტრიქონები</h3>
+          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. „ეს მურმან ძველაიასთვის ერთგვარად საიუბილეო კრებულია“.</p>
+        </div>
+      </article>
+      <article class="book">
+        <div class="book-year">2007</div>
+        <div>
+          <h3 class="book-title">გვირილების მინდორი (რჩეულივით)</h3>
+          <p class="book-desc">გამომცემლობა „ეგრისი“. „ავტორი ამ წიგნს ტრაგიკულად დაღუპული მოსწავლის, სოსო სანაძის ხსოვნას უძღვნის“.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-  <p>მურმან ძველაია · ციფრული მემკვიდრეობა</p>
+  <div class="wrap">
+    <p class="sig">მურმან ძველაია</p>
+    <p>ციფრული მემკვიდრეობა · 1935—2012</p>
+  </div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ფოტოს გადიდებული ხედი">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="დახურვა">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="წინა ფოტო">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="შემდეგი ფოტო">›</button>
+  <div class="lb-count" id="lbCount"></div>
 </div>
 
-<script>
-function sw(name) {
-  ['home','poems','gallery','books'].forEach(function(p) {
-    document.getElementById('sec-'+p).classList.toggle('hidden', p !== name);
-  });
-  document.querySelectorAll('.nav-links a').forEach(function(a, i) {
-    var map = {home:0, poems:1, gallery:2, books:3};
-    a.classList.toggle('active', i === map[name]);
-  });
+<button class="to-top" id="toTop" type="button" aria-label="გვერდის დასაწყისში დაბრუნება">
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "მურმან ძველაია",
+  "alternateName": "Murman Dzvelaia",
+  "birthDate": "1935-09-20",
+  "deathDate": "2012",
+  "birthPlace": "აბაშა, საქართველო",
+  "jobTitle": ["პოეტი", "პედაგოგი"],
+  "image": "https://ninodzvelaia.github.io/murman-dzvelaia/photos/main.jpeg",
+  "url": "https://ninodzvelaia.github.io/murman-dzvelaia/"
 }
-function tog(card) { card.classList.toggle('open'); }
-function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---------- თემა ---------- */
+  var toggle = document.getElementById('themeToggle');
+  function currentTheme() {
+    return root.dataset.theme ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function syncLabel() {
+    var dark = currentTheme() === 'dark';
+    toggle.setAttribute('aria-label', dark ? 'დღის რეჟიმის ჩართვა' : 'ღამის რეჟიმის ჩართვა');
+  }
+  toggle.addEventListener('click', function () {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncLabel();
+  });
+  syncLabel();
+
+  /* ---------- ზედა ზოლი და scroll-spy ---------- */
+  var topbar = document.getElementById('topbar');
+  var toTop = document.getElementById('toTop');
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+
+  function onScroll() {
+    var y = window.scrollY;
+    topbar.classList.toggle('scrolled', y > 120);
+    toTop.classList.toggle('show', y > 700);
+
+    var active = -1;
+    sections.forEach(function (sec, i) {
+      if (sec && sec.getBoundingClientRect().top <= 140) active = i;
+    });
+    navLinks.forEach(function (a, i) {
+      if (i === active) { a.setAttribute('aria-current', 'true'); }
+      else { a.removeAttribute('aria-current'); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- გამოჩენა სქროლზე ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- ლექსები ---------- */
+  var poems = Array.prototype.slice.call(document.querySelectorAll('.poem'));
+  document.getElementById('poemCount').textContent = poems.length + ' ლექსი';
+
+  function setOpen(poem, open) {
+    poem.classList.toggle('open', open);
+    poem.querySelector('.poem-header').setAttribute('aria-expanded', String(open));
+  }
+  poems.forEach(function (poem) {
+    /* თუ პირველი სტრიქონი სათაურს იმეორებს, ანონსს არ ვაჩვენებთ */
+    var title = poem.querySelector('.poem-title').textContent.trim();
+    var prev = poem.querySelector('.poem-preview');
+    if (prev.textContent.trim().replace(/…$/, '') === title) prev.remove();
+
+    poem.querySelector('.poem-header').addEventListener('click', function () {
+      setOpen(poem, !poem.classList.contains('open'));
+    });
+  });
+
+  /* ლინკით გახსნა: #poem-3 */
+  function openFromHash() {
+    var id = location.hash.slice(1);
+    if (!/^poem-\d+$/.test(id)) return;
+    var poem = document.getElementById(id);
+    if (!poem) return;
+    setOpen(poem, true);
+    poem.scrollIntoView({ block: 'center' });
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  /* ძებნა */
+  var search = document.getElementById('poemSearch');
+  var empty = document.getElementById('poemEmpty');
+  var counter = document.getElementById('poemCount');
+  search.addEventListener('input', function () {
+    var q = search.value.trim().toLowerCase();
+    var found = 0;
+    poems.forEach(function (poem) {
+      var hit = !q || poem.textContent.toLowerCase().indexOf(q) !== -1;
+      poem.classList.toggle('hidden', !hit);
+      if (hit) found++;
+    });
+    empty.classList.toggle('hidden', found > 0);
+    counter.textContent = q ? found + ' ნაპოვნი' : poems.length + ' ლექსი';
+  });
+
+  /* ---------- გალერეა ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCount = document.getElementById('lbCount');
+  var current = 0, lastFocus = null;
+
+  function render() {
+    var img = items[current].querySelector('img');
+    lbImg.src = img.dataset.full || img.src;
+    lbImg.alt = img.alt;
+    lbCount.textContent = (current + 1) + ' / ' + items.length;
+  }
+  function openLb(i) {
+    current = i;
+    lastFocus = document.activeElement;
+    render();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  function step(d) { current = (current + d + items.length) % items.length; render(); }
+
+  items.forEach(function (item, i) {
+    item.addEventListener('click', function () { openLb(i); });
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function () { step(-1); });
+  document.getElementById('lbNext').addEventListener('click', function () { step(1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+})();
 </script>
 </body>
 </html>
