@@ -187,6 +187,47 @@ img { display: block; max-width: 100%; }
 .nav a:hover { color: var(--ink); }
 .nav a[aria-current="true"] { color: var(--ink); background: var(--surface); }
 
+.lang-toggle {
+  flex-shrink: 0;
+  height: 34px;
+  padding: 0 0.7rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent-2); }
+
+.lang-note {
+  max-width: var(--read);
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--accent-2);
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.book-en {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin-top: 0.15rem;
+}
+.book-en:empty { display: none; }
+
 .theme-toggle {
   flex-shrink: 0;
   width: 34px; height: 34px;
@@ -572,6 +613,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-quote { max-width: none; }
   .nav a { font-size: 0.78rem; padding: 0.35rem 0.5rem; }
+  .lang-toggle { padding: 0 0.55rem; font-size: 0.7rem; }
   .books::before { left: 3.2rem; }
   .book { grid-template-columns: 3.2rem 1fr; gap: 1.1rem; }
   .book::before { left: calc(3.2rem - 3px); }
@@ -597,17 +639,18 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">გადასვლა ძირითად შიგთავსზე</a>
+<a class="skip-link" href="#main" data-i18n="skip">გადასვლა ძირითად შიგთავსზე</a>
 
 <header class="topbar" id="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#top">მურმან ძველაია</a>
-    <nav class="nav" aria-label="სექციები">
-      <a href="#biography">ბიოგრაფია</a>
-      <a href="#poems">ლექსები</a>
-      <a href="#gallery">გალერეა</a>
-      <a href="#books">კრებულები</a>
+    <a class="brand" href="#top" data-i18n="name_inline">მურმან ძველაია</a>
+    <nav class="nav" aria-label="სექციები" data-i18n-aria="nav_label">
+      <a href="#biography" data-i18n="nav_bio">ბიოგრაფია</a>
+      <a href="#poems" data-i18n="nav_poems">ლექსები</a>
+      <a href="#gallery" data-i18n="nav_gallery">გალერეა</a>
+      <a href="#books" data-i18n="nav_books">კრებულები</a>
     </nav>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English"><span id="langLabel">EN</span></button>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="ღამის რეჟიმის ჩართვა">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
         <circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
@@ -625,18 +668,17 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 <div class="wrap" id="top">
   <div class="hero">
     <div class="hero-text">
-      <p class="hero-eyebrow">ციფრული არქივი</p>
-      <h1>მურმან<br>ძველაია</h1>
+      <p class="hero-eyebrow" data-i18n="archive">ციფრული არქივი</p>
+      <h1 data-i18n-html="name">მურმან<br>ძველაია</h1>
       <p class="hero-years">1935 — 2012</p>
       <div class="hero-tags">
-        <span class="tag">პოეტი</span>
-        <span class="tag">პედაგოგი</span>
-        <span class="tag">10 კრებული</span>
+        <span class="tag" data-i18n="poet">პოეტი</span>
+        <span class="tag" data-i18n="teacher">პედაგოგი</span>
       </div>
-      <blockquote class="hero-quote">„რამდენი ფიქრი, რამდენი სევდა<br>ნელა გადადის ენგურის ხიდზე.“</blockquote>
+      <blockquote class="hero-quote" data-i18n-html="quote">„რამდენი ფიქრი, რამდენი სევდა<br>ნელა გადადის ენგურის ხიდზე.“</blockquote>
     </div>
     <figure class="portrait reveal">
-      <img src="photos/thumbs/main.jpeg" alt="პოეტი მურმან ძველაია" width="600" height="800" fetchpriority="high">
+      <img src="photos/thumbs/main.jpeg" alt="პოეტი მურმან ძველაია" data-i18n-alt="portrait_alt" width="600" height="800" fetchpriority="high">
     </figure>
   </div>
 </div>
@@ -645,18 +687,18 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 <section class="band" id="biography">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">ბიოგრაფია</span>
+      <span class="eyebrow" data-i18n="biography">ბიოგრაფია</span>
       <span class="line"></span>
     </div>
     <div class="bio-grid">
-      <div class="bio-text reveal">მურმან ძველაია 1935 წლის 20 სექტემბერს აბაშაში დაიბადა. გორის პედაგოგიური ინსტიტუტის დამთავრების შემდეგ საცხოვრებლად აფხაზეთში გადავიდა და გალის რაიონის ერთ-ერთ სკოლაში მასწავლებლად მუშაობდა. ჯერ კიდევ ომამდე მისი რამდენიმე პოეტური კრებული გამოიცა.
+      <div class="bio-text reveal" data-i18n-html="bio">მურმან ძველაია 1935 წლის 20 სექტემბერს აბაშაში დაიბადა. გორის პედაგოგიური ინსტიტუტის დამთავრების შემდეგ საცხოვრებლად აფხაზეთში გადავიდა და გალის რაიონის ერთ-ერთ სკოლაში მასწავლებლად მუშაობდა. ჯერ კიდევ ომამდე მისი რამდენიმე პოეტური კრებული გამოიცა.
       <br><br>
-      აფხაზეთი პოეტს არც ომის შემდეგ დაუტოვებია — იგი სიცოცხლის ბოლომდე სოფელ პირველ გალში დარჩა და ნარინჯოვანის საშუალო სკოლაში მუშაობა გააგრძელა. 2002 წელს მისი რჩეული, „გვირილების მინდორი“ გამოიცა. პოეტი 2012 წელს, 77 წლის ასაკში გარდაიცვალა. დაკრძალულია სოფელ პირველ გალში.</div>
+      აფხაზეთი პოეტს არც ომის შემდეგ დაუტოვებია — იგი სიცოცხლის ბოლომდე სოფელ პირველ გალში დარჩა და ნარინჯოვანის საშუალო სკოლაში მუშაობა გააგრძელა. 2007 წელს მისი რჩეული, „გვირილების მინდორი“ გამოიცა. პოეტი 2012 წელს, 77 წლის ასაკში გარდაიცვალა. დაკრძალულია სოფელ პირველ გალში.</div>
       <dl class="facts reveal">
-        <div class="fact"><dt>დაბადება</dt><dd>1935 წლის 20 სექტემბერი, აბაშა</dd></div>
-        <div class="fact"><dt>ცხოვრება და მოღვაწეობა</dt><dd>აფხაზეთი, სოფელი პირველი გალი</dd></div>
-        <div class="fact"><dt>კრებულები</dt><dd>10 წიგნი, 1978—2007</dd></div>
-        <div class="fact"><dt>გარდაცვალება</dt><dd>2012, სოფელი პირველი გალი</dd></div>
+        <div class="fact"><dt data-i18n="born_l">დაბადება</dt><dd data-i18n="born_v">1935 წლის 20 სექტემბერი, აბაშა</dd></div>
+        <div class="fact"><dt data-i18n="life_l">ცხოვრება და მოღვაწეობა</dt><dd data-i18n="life_v">აფხაზეთი, სოფელი პირველი გალი</dd></div>
+        <div class="fact"><dt data-i18n="collections_l">კრებულები</dt><dd data-i18n="collections_v">10 წიგნი, 1978—2007</dd></div>
+        <div class="fact"><dt data-i18n="died_l">გარდაცვალება</dt><dd data-i18n="died_v">2012, სოფელი პირველი გალი</dd></div>
       </dl>
     </div>
   </div>
@@ -666,7 +708,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 <section class="band band-alt" id="poems">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">ლექსები</span>
+      <span class="eyebrow" data-i18n="poems">ლექსები</span>
       <span class="line"></span>
       <span class="count" id="poemCount"></span>
     </div>
@@ -674,10 +716,11 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
         <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
       </svg>
-      <label class="skip-link" for="poemSearch">ლექსების ძებნა</label>
-      <input type="search" id="poemSearch" class="poem-search" placeholder="ძებნა სათაურში ან ტექსტში…" autocomplete="off">
+      <label class="skip-link" for="poemSearch" data-i18n="search_label">ლექსების ძებნა</label>
+      <input type="search" id="poemSearch" class="poem-search" placeholder="ძებნა სათაურში ან ტექსტში…" data-i18n-placeholder="search_ph" autocomplete="off">
     </div>
-    <p class="poem-empty hidden" id="poemEmpty">ვერაფერი მოიძებნა.</p>
+    <p class="poem-empty hidden" id="poemEmpty" data-i18n="no_results">ვერაფერი მოიძებნა.</p>
+    <p class="lang-note hidden" id="langNote">Poems are shown in the original Georgian — translating verse is a job for a translator, not a machine.</p>
     <div class="poem-list reveal">
       <article class="poem" id="poem-1">
         <button class="poem-header" type="button" aria-expanded="false" aria-controls="poem-body-1">
@@ -705,7 +748,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 გვწუწავს და გვწუწავს მიზეზ და მიზეზ...
 რამდენი სევდა, რამდენი ფიქრი
 ნელა გადადის ენგურის ხიდზე.</pre>
-          <a class="poem-permalink" href="#poem-1">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-1">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-2">
@@ -729,7 +772,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 კიდევ სხვათათვის - არაფერი გამოვიდა რა...
 შენი კი, ჯემალ, - კვლავაც მინდა ვადიდო სტარტი -
 რომ საქართველოს სიყვარულშიც ხარ დიდოსტატი.</pre>
-          <a class="poem-permalink" href="#poem-2">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-2">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-3">
@@ -764,7 +807,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 ერთიანმა საქართველომ თავი მის წინ დახარა
 ცა გვრინავდა მეწამული, სუნი იდგა ორღობის
 და დაეცა წიწამურის ველს მამალი ხოხობი...</pre>
-          <a class="poem-permalink" href="#poem-3">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-3">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-4">
@@ -793,7 +836,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 მზე მძიმედ ჩადის და წვიმს.
 ორად გაყოფილი ენგური
 რა მდორედ მიიწევს წინ.</pre>
-          <a class="poem-permalink" href="#poem-4">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-4">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-5">
@@ -838,7 +881,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 ისე მოვკვდები,
 ვერ შეგისრულებ,
 ალბათ, დანაპირს.</pre>
-          <a class="poem-permalink" href="#poem-5">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-5">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-6">
@@ -863,7 +906,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 მღვრიე არაგვმაც წარბი აშვილდა.
 თქვენს მძიმე წარსულს, ნათელ მომავალს
 უმღერდა ჩანგი რაზიკაშვილთა.</pre>
-          <a class="poem-permalink" href="#poem-6">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-6">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-7">
@@ -888,7 +931,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 დრო ელოდება ახალ ტიტანებს.
 მოდით, მოვარდით, როგორც მეწყერი,
 ცოცხლად დამმარხეთ და გამიტანეთ.</pre>
-          <a class="poem-permalink" href="#poem-7">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-7">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-8">
@@ -911,7 +954,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 ღმერთო, საქართველოს უშველე.
 არიდე სიტყვებს დენთიანებს,―
 მიწებს რა ხარბად იყოფენ...</pre>
-          <a class="poem-permalink" href="#poem-8">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-8">ბმული ამ ლექსზე</a>
         </div>
       </article>
       <article class="poem" id="poem-9">
@@ -932,7 +975,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 მივიწყების ტანსაბურავს მომახურავს ფინიში რომ.
 მოირბინე ჩემს საფლავთან, ფრთა შეგასხას განთიადმა,
 და ჩამძახე: ჩემო ბაბუ, საქართველო გამთლიანდა!...</pre>
-          <a class="poem-permalink" href="#poem-9">ბმული ამ ლექსზე</a>
+          <a class="poem-permalink" data-i18n="permalink" href="#poem-9">ბმული ამ ლექსზე</a>
         </div>
       </article>
     </div>
@@ -943,9 +986,9 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 <section class="band" id="gallery">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">ფოტოგალერეა</span>
+      <span class="eyebrow" data-i18n="photogallery">ფოტოგალერეა</span>
       <span class="line"></span>
-      <span class="count">6 ფოტო</span>
+      <span class="count" data-i18n="photo_count">6 ფოტო</span>
     </div>
     <div class="gallery-grid reveal">
       <button class="gallery-item" type="button" aria-label="ფოტოს გადიდება 1"><img src="photos/thumbs/photo1.jpeg" data-full="photos/photo1.jpeg" alt="მურმან ძველაია, ფოტო 1" loading="lazy" decoding="async" width="600" height="800"></button>
@@ -962,7 +1005,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 <section class="band band-alt" id="books">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">გამოცემული კრებულები</span>
+      <span class="eyebrow" data-i18n="published">გამოცემული კრებულები</span>
       <span class="line"></span>
       <span class="count">1978 — 2007</span>
     </div>
@@ -970,71 +1013,71 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
       <article class="book">
         <div class="book-year">1978</div>
         <div>
-          <h3 class="book-title">მონატრება</h3>
-          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „მონატრება“ პოეტის პირველი წიგნია. „მამულისადმი თავდადება, ჩვენი წარსული და აწმყო, ფიქრი მომავალზე, ომის დღეების გამოძახილი, სიყვარული და მეგობრობა - აი, რა ასულდგმულებს ახალგაზრდა პოეტის ლექსებს.“</p>
+          <h3 class="book-title">მონატრება<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ალაშარა“, სოხუმი. „მონატრება“ პოეტის პირველი წიგნია. „მამულისადმი თავდადება, ჩვენი წარსული და აწმყო, ფიქრი მომავალზე, ომის დღეების გამოძახილი, სიყვარული და მეგობრობა - აი, რა ასულდგმულებს ახალგაზრდა პოეტის ლექსებს.“</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">1982</div>
         <div>
-          <h3 class="book-title">მწიფე ველები</h3>
-          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „წინამდებარე კრებული მურმან ძველაიას მეორე წიგნია. სიყვარულით წერს იგი სამშობლოზე, მშობლიურ მიწა-წყალზე, მისთვის ძვირფას ადამიანებზე. პოეტის ლექსებისთვის ნიშანდობლივია გულწრფელობა“.</p>
+          <h3 class="book-title">მწიფე ველები<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ალაშარა“, სოხუმი. „წინამდებარე კრებული მურმან ძველაიას მეორე წიგნია. სიყვარულით წერს იგი სამშობლოზე, მშობლიურ მიწა-წყალზე, მისთვის ძვირფას ადამიანებზე. პოეტის ლექსებისთვის ნიშანდობლივია გულწრფელობა“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">1985</div>
         <div>
-          <h3 class="book-title">ზღვა და გული</h3>
-          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „ზღვა და გული“ მურმან ძველაიას მესამე კრებულია. „პოეტი წერს სიყვარულზე და მეგობრობაზე, დღევანდელობა და ისტორიულ წარსულზე, გულწრფელად ახარებს ადრე მიტოვებული სოფლის აღორძინება, ადიდებს მშრომელი კაცის მარჯვენას“.</p>
+          <h3 class="book-title">ზღვა და გული<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ალაშარა“, სოხუმი. „ზღვა და გული“ მურმან ძველაიას მესამე კრებულია. „პოეტი წერს სიყვარულზე და მეგობრობაზე, დღევანდელობა და ისტორიულ წარსულზე, გულწრფელად ახარებს ადრე მიტოვებული სოფლის აღორძინება, ადიდებს მშრომელი კაცის მარჯვენას“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">1991</div>
         <div>
-          <h3 class="book-title">სიმღერის სიმწვანე</h3>
-          <p class="book-desc">გამომცემლობა „ალაშარა“, სოხუმი. „მურმან ძველაიას წიგნში შეტანილია ბოლო წლებში დაწერილი გამოუქვეყნებელი ლექსები“.</p>
+          <h3 class="book-title">სიმღერის სიმწვანე<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ალაშარა“, სოხუმი. „მურმან ძველაიას წიგნში შეტანილია ბოლო წლებში დაწერილი გამოუქვეყნებელი ლექსები“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2000</div>
         <div>
-          <h3 class="book-title">მძიმე ვალსი</h3>
-          <p class="book-desc">გამომცემლობა „განათლება“, თბილისი. პოეტისთვის ეს წიგნი რიგით მეხუთეა. „ყურადღებას იქცევს ვერსიფიკაციული ძიებით, თავისებური პოეტური ხედვითა თუ მეტაფორული აზროვნებით“.</p>
+          <h3 class="book-title">მძიმე ვალსი<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „განათლება“, თბილისი. პოეტისთვის ეს წიგნი რიგით მეხუთეა. „ყურადღებას იქცევს ვერსიფიკაციული ძიებით, თავისებური პოეტური ხედვითა თუ მეტაფორული აზროვნებით“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2002</div>
         <div>
-          <h3 class="book-title">იმედების გვირგვინი</h3>
-          <p class="book-desc">ავტორის რიგით მეექვსე წიგნი. „ბოლო დროის შემოქმედებას ცრემლის მდუღარებასავით შეერია აფხაზეთის ტრაგედიის სატკივარი. ნათელ, კაშკაშა ფერებს „მსუყე შავი“ სევდასავით შეენივთა და თითქოს კიდევ უფრო გულმისავალი გახდა მათი პოეტური იმპულსები“.</p>
+          <h3 class="book-title">იმედების გვირგვინი<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>ავტორის რიგით მეექვსე წიგნი. „ბოლო დროის შემოქმედებას ცრემლის მდუღარებასავით შეერია აფხაზეთის ტრაგედიის სატკივარი. ნათელ, კაშკაშა ფერებს „მსუყე შავი“ სევდასავით შეენივთა და თითქოს კიდევ უფრო გულმისავალი გახდა მათი პოეტური იმპულსები“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2003</div>
         <div>
-          <h3 class="book-title">აბაშა და აბაშელები</h3>
-          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. კრებული რიგით მეშვიდე წიგნია. „გულწრფელი მოფერება, სიყვარულის ხმამაღლა გაცხადება ამ მხარეში მცხოვრებლებისადმი. აქ საბჭოური პერიოდის ლექსებიცაა შეტანილი. ძველი და ახალი ყოფა-ცხოვრება - ორივე - პოეტის გულისგულშია გავლილი და ეს ასახულია კიდეც ამ კრებულში“.</p>
+          <h3 class="book-title">აბაშა და აბაშელები<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ეგრისი“, თბილისი. კრებული რიგით მეშვიდე წიგნია. „გულწრფელი მოფერება, სიყვარულის ხმამაღლა გაცხადება ამ მხარეში მცხოვრებლებისადმი. აქ საბჭოური პერიოდის ლექსებიცაა შეტანილი. ძველი და ახალი ყოფა-ცხოვრება - ორივე - პოეტის გულისგულშია გავლილი და ეს ასახულია კიდეც ამ კრებულში“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2004</div>
         <div>
-          <h3 class="book-title">წარსული აწმყოში</h3>
-          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. პოეტისთვის ეს წიგნი რიგით მერვეა. „მას გულისგულში სტკივა თავისი ქვეყნის ტკივილი და სჯერა, რომ ამ ტკივილის მოსაშუშებლად ერთად დგომა და ეროვნული სულიერებისა და ცნობიერების გაჯანსაღებაა საჭირო“.</p>
+          <h3 class="book-title">წარსული აწმყოში<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ეგრისი“, თბილისი. პოეტისთვის ეს წიგნი რიგით მერვეა. „მას გულისგულში სტკივა თავისი ქვეყნის ტკივილი და სჯერა, რომ ამ ტკივილის მოსაშუშებლად ერთად დგომა და ეროვნული სულიერებისა და ცნობიერების გაჯანსაღებაა საჭირო“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2005</div>
         <div>
-          <h3 class="book-title">შერეკილი სტრიქონები</h3>
-          <p class="book-desc">გამომცემლობა „ეგრისი“, თბილისი. „ეს მურმან ძველაიასთვის ერთგვარად საიუბილეო კრებულია“.</p>
+          <h3 class="book-title">შერეკილი სტრიქონები<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ეგრისი“, თბილისი. „ეს მურმან ძველაიასთვის ერთგვარად საიუბილეო კრებულია“.</p>
         </div>
       </article>
       <article class="book">
         <div class="book-year">2007</div>
         <div>
-          <h3 class="book-title">გვირილების მინდორი (რჩეულივით)</h3>
-          <p class="book-desc">გამომცემლობა „ეგრისი“. „ავტორი ამ წიგნს ტრაგიკულად დაღუპული მოსწავლის, სოსო სანაძის ხსოვნას უძღვნის“.</p>
+          <h3 class="book-title">გვირილების მინდორი (რჩეულივით)<span class="book-en"></span></h3>
+          <p class="book-desc" data-i18n-book>გამომცემლობა „ეგრისი“. „ავტორი ამ წიგნს ტრაგიკულად დაღუპული მოსწავლის, სოსო სანაძის ხსოვნას უძღვნის“.</p>
         </div>
       </article>
     </div>
@@ -1045,20 +1088,20 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 
 <footer>
   <div class="wrap">
-    <p class="sig">მურმან ძველაია</p>
-    <p>ციფრული მემკვიდრეობა · 1935—2012</p>
+    <p class="sig" data-i18n="name_inline">მურმან ძველაია</p>
+    <p data-i18n="legacy">ციფრული მემკვიდრეობა · 1935—2012</p>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ფოტოს გადიდებული ხედი">
-  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="დახურვა">×</button>
-  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="წინა ფოტო">‹</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ფოტოს გადიდებული ხედი" data-i18n-aria="lb_label">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="დახურვა" data-i18n-aria="lb_close">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="წინა ფოტო" data-i18n-aria="lb_prev">‹</button>
   <img id="lbImg" src="" alt="">
-  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="შემდეგი ფოტო">›</button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="შემდეგი ფოტო" data-i18n-aria="lb_next">›</button>
   <div class="lb-count" id="lbCount"></div>
 </div>
 
-<button class="to-top" id="toTop" type="button" aria-label="გვერდის დასაწყისში დაბრუნება">
+<button class="to-top" id="toTop" type="button" aria-label="გვერდის დასაწყისში დაბრუნება" data-i18n-aria="to_top">
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
@@ -1083,6 +1126,194 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 (function () {
   var root = document.documentElement;
 
+  var EN = {
+    "skip": "Skip to main content",
+    "name_inline": "Murman Dzvelaia",
+    "nav_label": "Sections",
+    "nav_bio": "Biography",
+    "nav_poems": "Poems",
+    "nav_gallery": "Gallery",
+    "nav_books": "Collections",
+    "archive": "Digital archive",
+    "name": "Murman<br>Dzvelaia",
+    "poet": "Poet",
+    "teacher": "Teacher",
+    "quote": "“So many thoughts, so much sorrow<br>cross slowly over the bridge of Enguri.”",
+    "portrait_alt": "The poet Murman Dzvelaia",
+    "biography": "Biography",
+    "poems": "Poems",
+    "photogallery": "Photographs",
+    "published": "Published collections",
+    "photo_count": "6 photos",
+    "bio": "Murman Dzvelaia was born on 20 September 1935 in Abasha. After graduating from the Gori Pedagogical Institute he moved to Abkhazia and taught at a school in the Gali district. Several of his poetry collections had already been published before the war.<br><br>He did not leave Abkhazia after the war either — he stayed in the village of Pirveli Gali for the rest of his life and went on teaching at the Narinjovani secondary school. In 2007 his selected poems, “Field of Daisies”, were published. The poet died in 2012, at the age of 77. He is buried in the village of Pirveli Gali.",
+    "born_l": "Born",
+    "born_v": "20 September 1935, Abasha",
+    "life_l": "Life and work",
+    "life_v": "Abkhazia, village of Pirveli Gali",
+    "collections_l": "Collections",
+    "collections_v": "10 books, 1978—2007",
+    "died_l": "Died",
+    "died_v": "2012, village of Pirveli Gali",
+    "search_label": "Search poems",
+    "search_ph": "Search by title or text…",
+    "no_results": "Nothing found.",
+    "permalink": "Link to this poem",
+    "legacy": "Digital legacy · 1935—2012",
+    "lb_label": "Enlarged photo view",
+    "lb_close": "Close",
+    "lb_prev": "Previous photo",
+    "lb_next": "Next photo",
+    "to_top": "Back to top",
+    "count_poems": "poems",
+    "found": "found",
+    "title": "Murman Dzvelaia — Poet (1935—2012)",
+    "theme_dark": "Switch to dark mode",
+    "theme_light": "Switch to light mode",
+    "lang_to": "გადართვა ქართულად"
+  };
+
+  var BOOKS_EN = [
+    [
+      "Longing",
+      "“Alashara” publishing house, Sukhumi. “Longing” is the poet's first book. “Devotion to the homeland, our past and present, thoughts of the future, the echo of the war years, love and friendship — this is what animates the young poet's verse.”"
+    ],
+    [
+      "Ripe Fields",
+      "“Alashara” publishing house, Sukhumi. “This collection is Murman Dzvelaia's second book. He writes with love about his homeland, his native soil and the people dear to him. Sincerity is characteristic of the poet's verse.”"
+    ],
+    [
+      "The Sea and the Heart",
+      "“Alashara” publishing house, Sukhumi. “The Sea and the Heart” is Murman Dzvelaia's third collection. “The poet writes about love and friendship, about the present day and the historical past; he sincerely rejoices at the revival of the village abandoned long ago, and praises the working man's hand.”"
+    ],
+    [
+      "The Green of Song",
+      "“Alashara” publishing house, Sukhumi. “Murman Dzvelaia's book gathers unpublished poems written in recent years.”"
+    ],
+    [
+      "A Heavy Waltz",
+      "“Ganatleba” publishing house, Tbilisi. This is the poet's fifth book. “It draws attention through its work with versification, its distinctive poetic vision and metaphorical thinking.”"
+    ],
+    [
+      "A Crown of Hopes",
+      "The author's sixth book. “Into the work of his later years the pain of the Abkhazian tragedy was mixed in like boiling tears. A ‘thick black’ was woven into the bright, vivid colours like sorrow, and their poetic impulses seem to have grown even more heart-reaching.”"
+    ],
+    [
+      "Abasha and Its People",
+      "“Egrisi” publishing house, Tbilisi. The seventh book in the series. “Sincere affection, love for the people of this region declared out loud. Poems from the Soviet period are included here too. The old and the new way of life — both — have passed through the poet's heart, and this is reflected in the collection.”"
+    ],
+    [
+      "The Past in the Present",
+      "“Egrisi” publishing house, Tbilisi. This is the poet's eighth book. “His country's pain hurts him deeply, and he believes that healing it calls for standing together and for restoring national spirituality and consciousness.”"
+    ],
+    [
+      "Wayward Lines",
+      "“Egrisi” publishing house, Tbilisi. “For Murman Dzvelaia this is something of an anniversary collection.”"
+    ],
+    [
+      "Field of Daisies (Selected Poems)",
+      "“Egrisi” publishing house. “The author dedicates this book to the memory of his pupil Soso Sanadze, who died tragically.”"
+    ]
+  ];
+
+  var search = document.getElementById('poemSearch');
+  var empty = document.getElementById('poemEmpty');
+  var counter = document.getElementById('poemCount');
+  var poemTotal = document.querySelectorAll('.poem').length;
+
+  function updateCount(found) {
+    if (found === undefined) found = null;
+    if (lang === 'en') {
+      counter.textContent = found === null
+        ? poemTotal + ' ' + EN.count_poems
+        : found + ' ' + EN.found;
+    } else {
+      counter.textContent = found === null
+        ? poemTotal + ' ლექსი'
+        : found + ' ნაპოვნი';
+    }
+  }
+
+  /* ---------- ენა ---------- */
+  var lang = 'ka';
+  try {
+    if (localStorage.getItem('lang') === 'en') lang = 'en';
+  } catch (e) {}
+
+  var langBtn = document.getElementById('langToggle');
+  var langLabel = document.getElementById('langLabel');
+  var langNote = document.getElementById('langNote');
+
+  /* ორიგინალი ქართული ტექსტი ვინახოთ, რომ უკან დაბრუნება ზუსტი იყოს */
+  var KA = {};
+  function remember(el, kind, key) {
+    var id = kind + ':' + key;
+    if (KA[id] === undefined) {
+      KA[id] = kind === 'html' ? el.innerHTML
+             : kind === 'text' ? el.textContent
+             : kind === 'placeholder' ? el.getAttribute('placeholder')
+             : kind === 'alt' ? el.getAttribute('alt')
+             : el.getAttribute('aria-label');
+    }
+    return KA[id];
+  }
+
+  function applyLang() {
+    var en = lang === 'en';
+    root.lang = en ? 'en' : 'ka';
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el, i) {
+      var key = el.dataset.i18n;
+      var ka = remember(el, 'text', key + '#' + i);
+      el.textContent = en && EN[key] ? EN[key] : ka;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el, i) {
+      var key = el.dataset.i18nHtml;
+      var ka = remember(el, 'html', key + '#' + i);
+      el.innerHTML = en && EN[key] ? EN[key] : ka;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el, i) {
+      var key = el.dataset.i18nAria;
+      var ka = remember(el, 'aria', key + '#' + i);
+      el.setAttribute('aria-label', en && EN[key] ? EN[key] : ka);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el, i) {
+      var key = el.dataset.i18nPlaceholder;
+      var ka = remember(el, 'placeholder', key + '#' + i);
+      el.setAttribute('placeholder', en && EN[key] ? EN[key] : ka);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el, i) {
+      var key = el.dataset.i18nAlt;
+      var ka = remember(el, 'alt', key + '#' + i);
+      el.setAttribute('alt', en && EN[key] ? EN[key] : ka);
+    });
+
+    /* კრებულები: ინგლისური სათაური ქართულის ქვეშ, აღწერა ითარგმნება */
+    document.querySelectorAll('.book').forEach(function (book, i) {
+      var enBook = BOOKS_EN[i];
+      var slot = book.querySelector('.book-en');
+      var desc = book.querySelector('[data-i18n-book]');
+      var ka = remember(desc, 'html', 'book' + i);
+      if (slot && enBook) slot.textContent = en ? enBook[0] : '';
+      if (desc) desc.innerHTML = en && enBook ? enBook[1] : ka;
+    });
+
+    /* ლექსები ორიგინალის ენაზე რჩება — შენიშვნა მხოლოდ ინგლისურ რეჟიმში */
+    langNote.classList.toggle('hidden', !en);
+
+    document.title = en ? EN.title : 'მურმან ძველაია — პოეტი (1935—2012)';
+    langLabel.textContent = en ? 'ქარ' : 'EN';
+    langBtn.setAttribute('aria-label', en ? EN.lang_to : 'Switch to English');
+
+    updateCount();
+    syncLabel();
+  }
+
+  langBtn.addEventListener('click', function () {
+    lang = lang === 'en' ? 'ka' : 'en';
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+    applyLang();
+  });
+
   /* ---------- თემა ---------- */
   var toggle = document.getElementById('themeToggle');
   function currentTheme() {
@@ -1091,7 +1322,11 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
   }
   function syncLabel() {
     var dark = currentTheme() === 'dark';
-    toggle.setAttribute('aria-label', dark ? 'დღის რეჟიმის ჩართვა' : 'ღამის რეჟიმის ჩართვა');
+    if (lang === 'en') {
+      toggle.setAttribute('aria-label', dark ? EN.theme_light : EN.theme_dark);
+    } else {
+      toggle.setAttribute('aria-label', dark ? 'დღის რეჟიმის ჩართვა' : 'ღამის რეჟიმის ჩართვა');
+    }
   }
   toggle.addEventListener('click', function () {
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
@@ -1099,7 +1334,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
     try { localStorage.setItem('theme', next); } catch (e) {}
     syncLabel();
   });
-  syncLabel();
+  applyLang();
 
   /* ---------- ზედა ზოლი და scroll-spy ---------- */
   var topbar = document.getElementById('topbar');
@@ -1143,7 +1378,6 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
 
   /* ---------- ლექსები ---------- */
   var poems = Array.prototype.slice.call(document.querySelectorAll('.poem'));
-  document.getElementById('poemCount').textContent = poems.length + ' ლექსი';
 
   function setOpen(poem, open) {
     poem.classList.toggle('open', open);
@@ -1173,9 +1407,6 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
   openFromHash();
 
   /* ძებნა */
-  var search = document.getElementById('poemSearch');
-  var empty = document.getElementById('poemEmpty');
-  var counter = document.getElementById('poemCount');
   search.addEventListener('input', function () {
     var q = search.value.trim().toLowerCase();
     var found = 0;
@@ -1185,7 +1416,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
       if (hit) found++;
     });
     empty.classList.toggle('hidden', found > 0);
-    counter.textContent = q ? found + ' ნაპოვნი' : poems.length + ' ლექსი';
+    updateCount(q ? found : null);
   });
 
   /* ---------- გალერეა ---------- */
