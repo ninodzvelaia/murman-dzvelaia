@@ -675,7 +675,7 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
         <span class="tag" data-i18n="poet">პოეტი</span>
         <span class="tag" data-i18n="teacher">პედაგოგი</span>
       </div>
-      <blockquote class="hero-quote" data-i18n-html="quote">„რამდენი ფიქრი, რამდენი სევდა,<br>ნელა გადადის ენგურის ხიდზე.“</blockquote>
+      <blockquote class="hero-quote" id="heroQuote">„რამდენი ფიქრი, რამდენი სევდა,<br>ნელა გადადის ენგურის ხიდზე.“</blockquote>
     </div>
     <figure class="portrait reveal">
       <img src="photos/thumbs/main.jpeg" alt="პოეტი მურმან ძველაია" data-i18n-alt="portrait_alt" width="600" height="800" fetchpriority="high">
@@ -1138,7 +1138,6 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
     "name": "Murman<br>Dzvelaia",
     "poet": "Poet",
     "teacher": "Teacher",
-    "quote": "“So many thoughts, so much sorrow<br>cross slowly over the bridge of Enguri.”",
     "portrait_alt": "The poet Murman Dzvelaia",
     "biography": "Biography",
     "poems": "Poems",
@@ -1297,7 +1296,8 @@ footer .sig { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); 
       if (desc) desc.innerHTML = en && enBook ? enBook[1] : ka;
     });
 
-    /* ლექსები ორიგინალის ენაზე რჩება — შენიშვნა მხოლოდ ინგლისურ რეჟიმში */
+    /* ლექსები და ტაეპები არ ითარგმნება: ინგლისურ რეჟიმში ციტატა იმალება */
+    document.getElementById('heroQuote').classList.toggle('hidden', en);
     langNote.classList.toggle('hidden', !en);
 
     document.title = en ? EN.title : 'მურმან ძველაია — პოეტი (1935—2012)';
